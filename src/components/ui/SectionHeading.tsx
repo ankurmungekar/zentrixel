@@ -22,7 +22,7 @@ export default function SectionHeading({
       </h2>
       {subtitle && (
         <p
-          className={`mt-3 font-body text-base leading-relaxed ${
+          className={`mt-3 whitespace-pre-line font-body text-base leading-relaxed ${
             light ? 'text-white/70' : 'text-muted'
           }`}
         >

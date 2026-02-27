@@ -18,7 +18,7 @@ export default function Testimonials() {
     <section className="bg-white py-20" id="testimonials">
       <div className="mx-auto max-w-[1440px] px-14">
         <div className="mb-10 flex justify-center">
-          <span className="inline-flex items-center gap-2.5 rounded-[20px] bg-primary/10 px-4 py-1.5 font-sub-heading text-2xl text-primary-dark">
+          <span className="font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
             Client Testimonials
           </span>
         </div>

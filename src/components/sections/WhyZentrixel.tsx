@@ -83,7 +83,7 @@ export default function WhyZentrixel() {
         <div className="mt-8 flex justify-center">
           <a
             href="/about"
-            className="inline-flex items-center gap-2.5 rounded-[20px] bg-primary/10 px-4 py-1.5 font-sub-heading text-2xl text-primary-dark transition-colors hover:bg-primary/20"
+            className="font-sub-heading text-2xl leading-[1.5em] text-[#023497]"
           >
             Why Zentrixel?
           </a>
