@@ -1,94 +1,139 @@
 import SectionHeading from '../ui/SectionHeading'
+import whyImage from '../../assets/images/why-zentrixel.png'
+import settingIcon from '../../assets/images/setting.svg'
+import shieldIcon from '../../assets/images/shield.svg'
+import brainIcon from '../../assets/images/brain.svg'
+import blockchainIcon from '../../assets/images/blockchain.svg'
 
 const FEATURES = [
   {
     title: 'Operationally Ready',
     description: 'Engineered for real users, live data, and operational complexity.',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1E5EFF" strokeWidth="1.5">
-        <rect x="2" y="4" width="28" height="24" rx="3" />
-        <path d="M2 10h28" />
-        <circle cx="6" cy="7" r="1" fill="#1E5EFF" />
-        <circle cx="10" cy="7" r="1" fill="#1E5EFF" />
-        <path d="M10 16l4 4 8-8" />
-      </svg>
-    ),
-  },
-  {
-    title: 'AI with Business Purpose',
-    description: 'Applied to automate processes and improve measurable outcomes.',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1E5EFF" strokeWidth="1.5">
-        <circle cx="16" cy="12" r="6" />
-        <path d="M16 6V4M22 12h2M10 12H8M20.24 7.76l1.42-1.42M11.76 7.76l-1.42-1.42" />
-        <path d="M8 24c0-4.42 3.58-8 8-8s8 3.58 8 8" />
-        <path d="M12 28v-4M20 28v-4" />
-      </svg>
-    ),
+    icon: settingIcon,
+    position: 'top-left' as const,
   },
   {
     title: 'Structured & Secure Delivery',
     description: 'Governance, compliance, and disciplined execution embedded at every stage.',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1E5EFF" strokeWidth="1.5">
-        <path d="M16 3L4 8v8c0 7.18 5.12 13.9 12 16 6.88-2.1 12-8.82 12-16V8L16 3z" />
-        <path d="M12 16l3 3 5-6" />
-      </svg>
-    ),
+    icon: shieldIcon,
+    position: 'top-right' as const,
+  },
+  {
+    title: 'AI with Business Purpose',
+    description: 'Applied to automate processes and improve measurable outcomes.',
+    icon: brainIcon,
+    position: 'bottom-left' as const,
   },
   {
     title: 'Architecture That Evolves',
     description: 'Designed to integrate, adapt, and grow with changing business needs.',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#1E5EFF" strokeWidth="1.5">
-        <rect x="4" y="4" width="10" height="10" rx="2" />
-        <rect x="18" y="4" width="10" height="10" rx="2" />
-        <rect x="4" y="18" width="10" height="10" rx="2" />
-        <rect x="18" y="18" width="10" height="10" rx="2" />
-        <path d="M14 9h4M14 23h4M9 14v4M23 14v4" />
-      </svg>
-    ),
+    icon: blockchainIcon,
+    position: 'bottom-right' as const,
   },
 ]
 
 export default function WhyZentrixel() {
+  const topLeft = FEATURES.find((f) => f.position === 'top-left')!
+  const topRight = FEATURES.find((f) => f.position === 'top-right')!
+  const bottomLeft = FEATURES.find((f) => f.position === 'bottom-left')!
+  const bottomRight = FEATURES.find((f) => f.position === 'bottom-right')!
+
   return (
     <section className="bg-white py-20" id="why-zentrixel">
       <div className="mx-auto max-w-[1440px] px-14">
+        <p className="mx-auto mb-4 w-fit font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
+          Why Zentrixel?
+        </p>
         <SectionHeading
           title="Built for Enterprise Environments"
-          subtitle="Enterprise systems must operate reliably under real-world conditions not just in demonstrations. That\u00a0principle\u00a0guides how we design from day one."
+          subtitle={"Enterprise systems must operate reliably under real-world conditions not just in demonstrations.\nThat principle guides how we design from day one."}
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature) => (
-            <div
-              key={feature.title}
-              className="relative rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/5">
-                {feature.icon}
-              </div>
-              <h3 className="font-body text-lg font-semibold text-navy">
-                {feature.title}
-              </h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-muted">
-                {feature.description}
-              </p>
-              <span className="absolute top-0 left-0 h-1 w-12 rounded-tl-xl bg-gradient-to-r from-primary to-transparent" />
+        {/* Desktop layout */}
+        <div className="relative mx-auto mt-14 hidden max-w-[1062px] lg:block">
+          <div className="grid grid-rows-[auto_auto] gap-y-10" style={{ gridTemplateColumns: '1fr 460px 1fr' }}>
+            {/* Row 1: top-left feature */}
+            <FeatureCard feature={topLeft} />
+
+            {/* Center image spanning 2 rows */}
+            <div className="relative row-span-2 flex flex-col items-center justify-end">
+              {/* Cyan arch behind person */}
+              <div
+                className="absolute bottom-0 w-[258px]"
+                style={{
+                  height: '463px',
+                  borderRadius: '120px 120px 0 0',
+                  background: 'radial-gradient(circle at 89% 100%, rgba(45,206,237,1) 0%, rgba(194,238,240,1) 100%)',
+                }}
+              />
+              <img
+                src={whyImage}
+                alt="Enterprise technology professional"
+                className="relative z-10 h-auto w-[288px] object-contain"
+                loading="lazy"
+              />
             </div>
-          ))}
+
+            {/* Row 1: top-right feature */}
+            <FeatureCard feature={topRight} align="right" />
+
+            {/* Row 2: bottom-left feature */}
+            <FeatureCard feature={bottomLeft} />
+
+            {/* Row 2: bottom-right feature */}
+            <FeatureCard feature={bottomRight} align="right" />
+          </div>
+
+          {/* Dashed lines — positioned at vertical center between top and bottom rows */}
+          <div className="pointer-events-none absolute inset-x-0" style={{ top: 'calc(50% + 10px)' }}>
+            {/* Left dashed line — fades on left end */}
+            <div
+              className="absolute left-0 h-px"
+              style={{
+                width: '38%',
+                background: 'repeating-linear-gradient(to right, rgba(30,94,255,0.5) 0px, rgba(30,94,255,0.5) 4px, transparent 4px, transparent 8px)',
+                maskImage: 'linear-gradient(to right, transparent, black 20%, black 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 100%)',
+              }}
+            />
+            {/* Right dashed line — fades on right end */}
+            <div
+              className="absolute right-0 h-px"
+              style={{
+                width: '42%',
+                background: 'repeating-linear-gradient(to right, rgba(30,94,255,0.5) 0px, rgba(30,94,255,0.5) 4px, transparent 4px, transparent 8px)',
+                maskImage: 'linear-gradient(to left, transparent, black 20%, black 100%)',
+                WebkitMaskImage: 'linear-gradient(to left, transparent, black 20%, black 100%)',
+              }}
+            />
+          </div>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <a
-            href="/about"
-            className="font-sub-heading text-2xl leading-[1.5em] text-[#023497]"
-          >
-            Why Zentrixel?
-          </a>
+        {/* Mobile layout: stacked */}
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:hidden">
+          {FEATURES.map((feature) => (
+            <FeatureCard key={feature.title} feature={feature} />
+          ))}
         </div>
       </div>
     </section>
+  )
+}
+
+function FeatureCard({ feature, align = 'left' }: { feature: (typeof FEATURES)[number]; align?: 'left' | 'right' }) {
+  return (
+    <div className={`flex flex-col justify-center ${align === 'right' ? 'items-end' : ''}`}>
+      <div>
+        <div className="mb-2">
+          <img src={feature.icon} alt="" width={32} height={32} />
+        </div>
+        <h3 className="whitespace-nowrap font-heading text-2xl font-semibold leading-[1.58em] text-navy">
+          {feature.title}
+        </h3>
+        <p className="mt-1 max-w-[322px] font-body text-base leading-[1.5em] text-muted">
+          {feature.description}
+        </p>
+      </div>
+    </div>
   )
 }
