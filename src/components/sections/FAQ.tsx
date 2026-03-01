@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import faqImage from '../../assets/images/faq.png'
 
 const FAQS = [
   {
@@ -38,29 +39,33 @@ export default function FAQ() {
 
   return (
     <section className="bg-white py-20" id="faq">
-      <div className="mx-auto max-w-[1440px] px-14">
+      <div className="mx-auto max-w-[1440px] px-14 max-md:px-6">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
-          <h2 className="font-heading text-4xl font-semibold leading-snug text-navy lg:w-[340px]">
-            FREQUENTLY{' '}
-            <span className="block">ASKED QUESTIONS</span>
-          </h2>
+          <div className="lg:w-[407px] lg:flex-shrink-0 lg:pt-[15px]">
+            <h2 className="whitespace-pre-line font-heading text-4xl font-semibold leading-[1.28em] text-navy">
+              {'FREQUENTLY\nASKED QUESTIONS'}
+            </h2>
+            <img
+              src={faqImage}
+              alt="Frequently asked questions"
+              className="mt-8 w-full max-w-[380px] object-contain max-lg:hidden"
+              loading="lazy"
+            />
+          </div>
 
           <div className="flex-1">
             {FAQS.map((faq, idx) => {
               const isOpen = openIndex === idx
               return (
-                <div
-                  key={idx}
-                  className="border-b border-gray-200"
-                >
+                <div key={idx}>
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : idx)}
-                    className="flex w-full items-center justify-between py-5 text-left"
+                    className="flex w-full items-center justify-between py-6 text-left cursor-pointer"
                     aria-expanded={isOpen}
                   >
                     <span
-                      className={`font-body text-base font-medium transition-colors ${
+                      className={`font-body text-xl font-medium leading-snug transition-colors ${
                         isOpen ? 'text-primary' : 'text-muted'
                       }`}
                     >
@@ -72,7 +77,7 @@ export default function FAQ() {
                         height="20"
                         viewBox="0 0 20 20"
                         fill="none"
-                        className={`transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                        className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                       >
                         <path
                           d="M5 8l5 5 5-5"
@@ -86,13 +91,14 @@ export default function FAQ() {
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-40 pb-5' : 'max-h-0'
+                      isOpen ? 'max-h-40 pb-4' : 'max-h-0'
                     }`}
                   >
-                    <p className="font-body text-sm leading-relaxed text-muted">
+                    <p className="font-body text-base leading-relaxed text-muted">
                       {faq.answer}
                     </p>
                   </div>
+                  <div className="h-px w-full bg-primary/20" />
                 </div>
               )
             })}

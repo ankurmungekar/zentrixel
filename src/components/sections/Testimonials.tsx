@@ -35,7 +35,7 @@ export default function Testimonials() {
   const swiperRef = useRef<SwiperType | null>(null)
 
   return (
-    <section className="bg-white py-20" id="testimonials">
+    <section className="bg-white py-20 mb-20" id="testimonials">
       <div className="mx-auto max-w-[1440px] px-14">
         <p className="mx-auto mb-4 w-fit font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
           Client Testimonials
