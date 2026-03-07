@@ -32,9 +32,9 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-14">
+      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-14 max-md:px-5">
         <Link to="/" aria-label="Zentrixel Home">
-          <img src={logo} alt="Zentrixel" className="h-[71px] w-auto" />
+          <img src={logo} alt="Zentrixel" className="h-[71px] w-auto max-md:h-[50px]" />
         </Link>
 
         <nav
@@ -89,7 +89,7 @@ export default function Header() {
 
       {mobileOpen && (
         <div className={`border-t lg:hidden ${scrolled ? 'border-white/10 bg-[#0D1429]' : 'border-white/10 bg-navy/95 backdrop-blur-md'}`}>
-          <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body">
+          <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body max-md:px-5">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}

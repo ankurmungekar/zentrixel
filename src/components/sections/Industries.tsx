@@ -44,8 +44,8 @@ const INDUSTRIES_ROW2 = [
 
 export default function Industries() {
   return (
-    <section className="bg-white py-20" id="industries">
-      <div className="mx-auto max-w-[1440px] px-14">
+    <section className="bg-white py-20 max-md:py-12" id="industries">
+      <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
         {/* Row 1: Title block + 2 cards */}
         <div className="hidden gap-[30px] lg:flex">
           {/* Title block */}
@@ -99,7 +99,7 @@ function IndustryCard({
   return (
     <Link
       to="/industries"
-      className="group relative flex h-[293px] flex-col justify-between overflow-hidden rounded-xl p-[30px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group relative flex h-[293px] flex-col justify-between overflow-hidden rounded-xl p-[30px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl max-md:h-[240px] max-md:p-5"
       style={{
         background: industry.gradient,
         width: mobile ? '100%' : industry.width,

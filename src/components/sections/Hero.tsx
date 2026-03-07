@@ -9,7 +9,7 @@ const TRUST_ITEMS = [
 
 export default function Hero() {
   return (
-    <section className="relative h-[800px] overflow-hidden">
+    <section className="relative h-[800px] overflow-hidden max-md:h-[700px]">
       {/* Full composited background from Figma (gradient + mask overlay baked in) */}
       <img
         src={heroBg}
@@ -22,10 +22,10 @@ export default function Hero() {
       />
 
       {/* Content positioned precisely per Figma */}
-      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col items-center px-14">
+      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col items-center px-14 max-md:px-5">
         {/* H1: y=176 from top */}
         <h1
-          className="mt-[176px] max-w-[842px] text-center font-heading text-[42px] font-medium text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:text-[56px] lg:text-[68px]"
+          className="mt-[176px] max-w-[842px] text-center font-heading text-[28px] font-medium text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:text-[42px] md:text-[56px] lg:text-[68px] max-md:mt-[120px]"
           style={{ lineHeight: '1.06em' }}
         >
           Engineering the Future of{' '}
@@ -34,7 +34,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle: 24px below heading */}
-        <p className="mt-6 max-w-[858px] text-center font-body text-base text-white sm:text-lg" style={{ lineHeight: '1.44em' }}>
+        <p className="mt-6 max-w-[858px] text-center font-body text-sm text-white sm:text-base md:text-lg max-md:mt-4" style={{ lineHeight: '1.44em' }}>
           Accelerate the speed of business with&nbsp;Zentrixel&nbsp;and our AI
           solutions for work, service, and process. We build software and AI
           systems that perform reliably and scale with your business.
@@ -52,7 +52,7 @@ export default function Hero() {
         {/* Trust section pushed to bottom area */}
         <div className="mt-auto mb-[80px] w-full max-lg:mt-10 max-lg:mb-6">
           {/* "Trusted Across Regulated Industries" label */}
-          <p className="text-center font-heading text-xl font-medium text-white" style={{ lineHeight: '2.9em' }}>
+          <p className="text-center font-heading text-base font-medium text-white md:text-xl" style={{ lineHeight: '2.9em' }}>
             Trusted Across Regulated Industries
           </p>
 
@@ -72,7 +72,7 @@ export default function Hero() {
                         'linear-gradient(90deg, rgba(30, 94, 255, 1) 0%, rgba(30, 94, 255, 1) 50%, rgba(30, 94, 255, 0) 100%)',
                     }}
                   />
-                  <p className="font-body text-base text-white" style={{ lineHeight: '1.5em' }}>
+                  <p className="font-body text-sm text-white md:text-base" style={{ lineHeight: '1.5em' }}>
                     {item}
                   </p>
                 </div>

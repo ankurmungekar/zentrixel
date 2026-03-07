@@ -39,8 +39,8 @@ export default function WhyZentrixel() {
   const bottomRight = FEATURES.find((f) => f.position === 'bottom-right')!
 
   return (
-    <section className="bg-white py-20" id="why-zentrixel">
-      <div className="mx-auto max-w-[1440px] px-14">
+    <section className="bg-white py-20 max-md:py-12" id="why-zentrixel">
+      <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
         <p className="mx-auto mb-4 w-fit font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
           Why Zentrixel?
         </p>
@@ -63,7 +63,6 @@ export default function WhyZentrixel() {
                 style={{
                   height: '463px',
                   borderRadius: '120px 120px 0 0',
-                  background: 'radial-gradient(circle at 89% 100%, rgba(45,206,237,1) 0%, rgba(194,238,240,1) 100%)',
                 }}
               />
               <img
@@ -127,7 +126,7 @@ function FeatureCard({ feature, align = 'left' }: { feature: (typeof FEATURES)[n
         <div className="mb-2">
           <img src={feature.icon} alt="" width={32} height={32} />
         </div>
-        <h3 className="whitespace-nowrap font-heading text-2xl font-semibold leading-[1.58em] text-navy">
+        <h3 className="font-heading text-2xl font-semibold leading-[1.58em] text-navy lg:whitespace-nowrap">
           {feature.title}
         </h3>
         <p className="mt-1 max-w-[322px] font-body text-base leading-[1.5em] text-muted">

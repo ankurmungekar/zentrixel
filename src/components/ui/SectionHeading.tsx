@@ -14,7 +14,7 @@ export default function SectionHeading({
   return (
     <div className={centered ? 'text-center' : ''}>
       <h2
-        className={`font-heading text-4xl font-semibold leading-snug ${
+        className={`font-heading text-4xl font-semibold leading-snug max-md:text-2xl ${
           light ? 'text-white' : 'text-navy'
         }`}
       >
@@ -22,7 +22,7 @@ export default function SectionHeading({
       </h2>
       {subtitle && (
         <p
-          className={`mt-3 whitespace-pre-line font-body text-base leading-relaxed ${
+          className={`mt-3 whitespace-pre-line font-body text-base leading-relaxed max-md:text-sm ${
             light ? 'text-white/70' : 'text-muted'
           }`}
         >

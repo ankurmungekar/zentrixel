@@ -35,12 +35,12 @@ export default function Testimonials() {
   const swiperRef = useRef<SwiperType | null>(null)
 
   return (
-    <section className="bg-white py-20 mb-20" id="testimonials">
-      <div className="mx-auto max-w-[1440px] px-14">
+    <section className="bg-white py-20 mb-20 max-md:py-12 max-md:mb-10" id="testimonials">
+      <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
         <p className="mx-auto mb-4 w-fit font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
           Client Testimonials
         </p>
-        <h2 className="text-center font-heading text-4xl font-semibold leading-[1.611em] text-navy">
+        <h2 className="text-center font-heading text-4xl font-semibold leading-[1.611em] text-navy max-md:text-2xl">
           Trusted by Enterprise Teams
         </h2>
 
@@ -81,7 +81,7 @@ export default function Testimonials() {
           >
             {TESTIMONIALS.map((t, idx) => (
               <SwiperSlide key={idx} className="pt-[28px]">
-                <article className="relative h-[360px] overflow-visible rounded-xl border border-[#C8CFFF] bg-white">
+                <article className="relative h-[360px] overflow-visible rounded-xl border border-[#C8CFFF] bg-white max-md:h-[320px]">
                   {/* Quote badge + top line */}
                   <div className="absolute left-[30px] right-[30px] top-0 h-px bg-gradient-to-r from-[#DCE4F8] to-transparent" />
                   <span className="absolute left-[20px] top-[-40px] z-10 flex h-[82px] w-[82px] items-center justify-center rounded-full border-[12px] border-white bg-[#E8F1FF]">
@@ -91,13 +91,13 @@ export default function Testimonials() {
                   </span>
 
                   {/* Quote text */}
-                  <blockquote className="px-10 pt-[75px] text-[20px] leading-[1.6em] text-muted">
+                  <blockquote className="px-10 pt-[75px] text-[20px] leading-[1.6em] text-muted max-md:px-5 max-md:pt-[60px] max-md:text-base">
                     {t.quote}
                   </blockquote>
 
                   {/* Footer */}
                   <div
-                    className="absolute bottom-0 left-0 right-0 h-[121px] border-t border-[#C8CFFF] px-10 pt-6"
+                    className="absolute bottom-0 left-0 right-0 h-[121px] border-t border-[#C8CFFF] px-10 pt-6 max-md:px-5 max-md:h-[100px] max-md:pt-4"
                     style={{ background: 'linear-gradient(180deg, rgba(245,249,255,1) 0%, rgba(232,241,255,1) 91%)' }}
                   >
                     <p className="font-body text-base font-medium leading-[1.25em] text-navy">
@@ -111,6 +111,30 @@ export default function Testimonials() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Mobile navigation */}
+          <div className="mt-6 flex items-center justify-center gap-4 lg:hidden">
+            <button
+              type="button"
+              aria-label="Previous testimonial"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#C8CFFF] bg-[#E8F1FF]"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18l-6-6 6-6" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Next testimonial"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#C8CFFF] bg-[#E8F1FF]"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18l6-6-6-6" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>

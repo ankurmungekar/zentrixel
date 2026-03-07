@@ -71,8 +71,8 @@ export default function Services() {
 
   return (
     <section id="services">
-      <div className="mx-auto max-w-[1440px] px-14">
-        <div className="bg-light-bg rounded-2xl px-10 pt-16 pb-10">
+      <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
+        <div className="bg-light-bg rounded-2xl px-10 pt-16 pb-10 max-md:px-4 max-md:pt-10">
           <p className="mx-auto mb-4 w-fit font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
             Our Services
           </p>
@@ -111,8 +111,8 @@ export default function Services() {
 
             <div className="bg-white rounded-2xl p-5 mt-8 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
               {tab.features.map((feature, idx) => (
-                <div key={idx} className={`relative ${idx > 0 ? 'pl-5' : ''}`}>
-                  {idx > 0 && <span className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-primary to-transparent" />}
+                <div key={idx} className={`relative ${idx > 0 ? 'lg:pl-5' : ''}`}>
+                  {idx > 0 && <span className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-primary to-transparent max-lg:hidden" />}
                   <div className="mb-2 flex h-8 w-8 items-center justify-center">
                     <img src={feature.icon} alt="" width={32} height={32} />
                   </div>

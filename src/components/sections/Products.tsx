@@ -44,8 +44,8 @@ export default function Products() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="bg-white py-20" id="products">
-      <div className="mx-auto max-w-[1440px] px-14">
+    <section className="bg-white py-20 max-md:py-12" id="products">
+      <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
         <p className="mx-auto mb-4 w-fit font-sub-heading text-2xl leading-[1.5em] text-[#023497]">
           Our Products
         </p>
@@ -65,7 +65,7 @@ export default function Products() {
                 className="relative cursor-pointer overflow-hidden rounded-2xl"
                 style={{
                   flex: isActive ? '0 0 416px' : '1 1 0%',
-                  transition: 'flex 500ms ease-in-out',
+                  transition: 'flex 300ms ease-in-out',
                 }}
                 onMouseEnter={() => setActiveIndex(idx)}
               >

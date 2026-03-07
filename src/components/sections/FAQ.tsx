@@ -38,11 +38,11 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section className="bg-white py-20" id="faq">
+    <section className="bg-white py-20 max-md:py-12" id="faq">
       <div className="mx-auto max-w-[1440px] px-14 max-md:px-6">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
           <div className="lg:w-[407px] lg:flex-shrink-0 lg:pt-[15px]">
-            <h2 className="whitespace-pre-line font-heading text-4xl font-semibold leading-[1.28em] text-navy">
+            <h2 className="whitespace-pre-line font-heading text-4xl font-semibold leading-[1.28em] text-navy max-md:text-3xl">
               {'FREQUENTLY\nASKED QUESTIONS'}
             </h2>
             <img
@@ -65,7 +65,7 @@ export default function FAQ() {
                     aria-expanded={isOpen}
                   >
                     <span
-                      className={`font-body text-xl font-medium leading-snug transition-colors ${
+                      className={`font-body text-xl font-medium leading-snug transition-colors max-md:text-base ${
                         isOpen ? 'text-primary' : 'text-muted'
                       }`}
                     >
