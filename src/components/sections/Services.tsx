@@ -88,7 +88,7 @@ export default function Services() {
                 key={t.label}
                 type="button"
                 onClick={() => setActive(idx)}
-                className={`h-[48px] cursor-pointer whitespace-nowrap rounded-[40px] px-4 py-2.5 text-center font-body text-sm transition-colors max-md:w-full max-md:rounded-xl ${
+                className={`h-[48px] flex-1 cursor-pointer whitespace-nowrap rounded-[40px] px-4 py-2.5 text-center font-body text-sm transition-colors max-md:w-full max-md:rounded-xl ${
                   idx === active
                     ? 'bg-active-tab font-medium text-white'
                     : 'bg-transparent font-normal text-[#475569] hover:bg-gray-50'

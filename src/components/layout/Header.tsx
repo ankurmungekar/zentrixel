@@ -60,9 +60,7 @@ export default function Header() {
 
         <Link
           to="/contact"
-          className={`hidden items-center gap-2.5 rounded-[30px] px-4 py-3 font-body text-base text-white transition-colors lg:flex ${
-            scrolled ? 'bg-primary hover:bg-primary/90' : 'bg-[#0D1429] hover:bg-[#0D1429]/90'
-          }`}
+          className={`hidden items-center gap-2.5 rounded-[30px] px-4 py-3 font-body text-base text-white transition-colors lg:flex bg-primary hover:bg-primary/90`}
         >
           Let's Connect
           <img src={letsArrow} alt="" width={22} height={22} />

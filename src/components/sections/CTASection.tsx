@@ -17,9 +17,20 @@ export default function CTASection() {
               className="mt-8 rounded-lg px-5 py-5"
               style={{ background: 'rgba(1, 19, 63, 0.3)' }}
             >
-              <p className="whitespace-pre-line font-body text-base leading-[2em] text-white">
-                {'Adopt powerful SaaS platforms.\nBuild custom AI-driven solutions.\nModernize with secure, scalable enterprise technology.'}
-              </p>
+              <ul className="flex flex-col gap-2 font-body text-base leading-[1.8em] text-white">
+                <li className="flex items-start gap-3">
+                  <span className="mt-[10px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-white" />
+                  Adopt powerful SaaS platforms.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-[10px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-white" />
+                  Build custom AI-driven solutions.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-[10px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-white" />
+                  Modernize with secure, scalable enterprise technology.
+                </li>
+              </ul>
             </div>
 
             <p className="mt-10 font-body text-xl leading-[1.6em] text-white max-md:mt-6 max-md:text-base">
