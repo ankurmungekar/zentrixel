@@ -9,50 +9,46 @@ const TRUST_ITEMS = [
 
 export default function Hero() {
   return (
-    <section className="relative h-[800px] overflow-hidden max-md:h-[700px]">
-      {/* Full composited background from Figma (gradient + mask overlay baked in) */}
+    <section className="relative min-h-screen overflow-hidden">
       <img
         src={heroBg}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         width={1440}
-        height={800}
+        height={900}
         fetchPriority="high"
       />
 
-      {/* Content positioned precisely per Figma */}
-      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col items-center px-14 max-md:px-5">
-        {/* H1: y=176 from top */}
-        <h1
-          className="mt-[176px] max-w-[842px] text-center font-heading text-[28px] font-medium text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:text-[42px] md:text-[56px] lg:text-[68px] max-md:mt-[120px]"
-          style={{ lineHeight: '1.06em' }}
-        >
-          Engineering the Future of{' '}
-          <br className="hidden sm:inline" />
-          <span className="bg-gradient-to-r from-[#1E5EFF] to-[#18B9E5] bg-clip-text text-transparent">Enterprise with AI</span>
-        </h1>
+      <div className="relative mx-auto flex min-h-screen max-w-[1440px] flex-col items-center justify-center px-14 pt-20 max-md:px-5">
+        <div className="flex flex-col items-center">
+          <h1
+            className="max-w-[842px] text-center font-heading text-[28px] font-medium text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:text-[42px] md:text-[56px] lg:text-[68px]"
+            style={{ lineHeight: '1.06em' }}
+          >
+            Engineering the Future of{' '}
+            <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-[#1E5EFF] to-[#18B9E5] bg-clip-text text-transparent">Enterprise with AI</span>
+          </h1>
 
-        {/* Subtitle: 24px below heading */}
-        <p className="mt-6 max-w-[858px] text-center font-body text-sm text-white sm:text-base md:text-lg max-md:mt-4" style={{ lineHeight: '1.44em' }}>
-          Accelerate the speed of business with&nbsp;Zentrixel&nbsp;and our AI
-          solutions for work, service, and process. We build software and AI
-          systems that perform reliably and scale with your business.
-        </p>
+          <p className="mt-6 max-w-[858px] text-center font-body text-sm text-white sm:text-base md:text-lg max-md:mt-4" style={{ lineHeight: '1.44em' }}>
+            Accelerate the speed of business with&nbsp;Zentrixel&nbsp;and our AI
+            solutions for work, service, and process. We build software and AI
+            systems that perform reliably and scale with your business.
+          </p>
 
-        {/* CTA Button: 20px below subtitle */}
-        <Link
-          to="/products"
-          className="mt-5 inline-flex h-12 items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90"
-          style={{ minWidth: '199px' }}
-        >
-          View Our Product
-        </Link>
+          <Link
+            to="/products"
+            className="mt-5 inline-flex h-12 items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90"
+            style={{ minWidth: '199px' }}
+          >
+            View Our Product
+          </Link>
+        </div>
 
-        {/* Trust section pushed to bottom area */}
-        <div className="mt-auto mb-[80px] w-full max-lg:mt-10 max-lg:mb-6">
+        <div className="mt-30 w-full">
           {/* "Trusted Across Regulated Industries" label */}
-          <p className="text-center font-heading text-base font-medium text-white md:text-xl" style={{ lineHeight: '2.9em' }}>
+          <p className="mb-3 text-center font-heading text-base font-medium text-white md:text-xl">
             Trusted Across Regulated Industries
           </p>
 
