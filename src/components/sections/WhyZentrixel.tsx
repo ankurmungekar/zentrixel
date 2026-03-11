@@ -109,10 +109,29 @@ export default function WhyZentrixel() {
         </div>
 
         {/* Mobile layout: stacked */}
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:hidden">
-          {FEATURES.map((feature) => (
-            <FeatureCard key={feature.title} feature={feature} />
-          ))}
+        <div className="mt-10 lg:hidden">
+          <div className="mx-auto mb-10 flex justify-center">
+            <div className="relative">
+              <div
+                className="absolute bottom-0 left-1/2 w-[180px] -translate-x-1/2"
+                style={{
+                  height: '320px',
+                  borderRadius: '90px 90px 0 0',
+                }}
+              />
+              <img
+                src={whyImage}
+                alt="Enterprise technology professional"
+                className="relative z-10 h-auto w-[200px] object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {FEATURES.map((feature) => (
+              <FeatureCard key={feature.title} feature={feature} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -121,8 +140,8 @@ export default function WhyZentrixel() {
 
 function FeatureCard({ feature, align = 'left' }: { feature: (typeof FEATURES)[number]; align?: 'left' | 'right' }) {
   return (
-    <div className={`flex flex-col justify-center ${align === 'right' ? 'items-end' : ''}`}>
-      <div>
+    <div className={`flex flex-col justify-center max-lg:items-center max-lg:text-center ${align === 'right' ? 'lg:items-end' : ''}`}>
+      <div className="max-lg:flex max-lg:flex-col max-lg:items-center">
         <div className="mb-2">
           <img src={feature.icon} alt="" width={32} height={32} />
         </div>

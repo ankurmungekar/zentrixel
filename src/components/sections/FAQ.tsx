@@ -35,7 +35,7 @@ const FAQS = [
 ]
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0)
+  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set(FAQS.map((_, i) => i)))
 
   return (
     <section className="bg-white py-20 max-md:py-12" id="faq">
@@ -55,12 +55,17 @@ export default function FAQ() {
 
           <div className="flex-1">
             {FAQS.map((faq, idx) => {
-              const isOpen = openIndex === idx
+              const isOpen = openIndices.has(idx)
               return (
                 <div key={idx}>
                   <button
                     type="button"
-                    onClick={() => setOpenIndex(isOpen ? -1 : idx)}
+                    onClick={() => setOpenIndices((prev) => {
+                      const next = new Set(prev)
+                      if (next.has(idx)) next.delete(idx)
+                      else next.add(idx)
+                      return next
+                    })}
                     className="flex w-full items-center justify-between py-6 text-left cursor-pointer"
                     aria-expanded={isOpen}
                   >

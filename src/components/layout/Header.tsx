@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
+import logoBlack from '../../assets/images/logo-black.png'
 import letsArrow from '../../assets/images/lets-arrow.svg'
 
 const NAV_LINKS = [
@@ -11,11 +12,16 @@ const NAV_LINKS = [
   { label: 'Contact', href: '/contact' },
 ]
 
+const LIGHT_HEADER_ROUTES = ['/about']
+
 const SCROLL_THRESHOLD = 176
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+
+  const isLightHeader = LIGHT_HEADER_ROUTES.includes(pathname)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY >= SCROLL_THRESHOLD)
@@ -24,23 +30,33 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
+
+  const headerBg = isLightHeader
+    ? 'bg-white shadow-[0_4px_8px_rgba(0,0,0,0.05)]'
+    : scrolled
+      ? 'bg-[#0D1429] shadow-md'
+      : 'bg-transparent'
+
+  const textColor = isLightHeader ? 'text-[#0F172A]' : 'text-white'
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0D1429] shadow-md'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}
     >
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-14 max-md:px-5">
         <Link to="/" aria-label="Zentrixel Home">
-          <img src={logo} alt="Zentrixel" className="h-[71px] w-auto max-md:h-[50px]" />
+          <img
+            src={isLightHeader ? logoBlack : logo}
+            alt="Zentrixel"
+            className="h-[53px] max-md:h-[40px] mt-[4px]"
+          />
         </Link>
 
         <nav
-          className={`hidden items-center gap-10 font-body text-base lg:flex transition-colors duration-300 ${
-            scrolled ? 'text-white' : 'text-white'
-          }`}
+          className={`hidden items-center gap-10 font-body text-base lg:flex transition-colors duration-300 ${textColor}`}
         >
           {NAV_LINKS.map((link) => (
             <Link
@@ -60,7 +76,7 @@ export default function Header() {
 
         <Link
           to="/contact"
-          className={`hidden items-center gap-2.5 rounded-[30px] px-4 py-3 font-body text-base text-white transition-colors lg:flex bg-primary hover:bg-primary/90`}
+          className="hidden items-center gap-2.5 rounded-[30px] bg-primary px-4 py-3 font-body text-base text-white transition-colors hover:bg-primary/90 lg:flex"
         >
           Let's Connect
           <img src={letsArrow} alt="" width={22} height={22} />
@@ -68,7 +84,7 @@ export default function Header() {
 
         <button
           type="button"
-          className={`lg:hidden transition-colors duration-300 text-white`}
+          className={`lg:hidden transition-colors duration-300 ${textColor}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -86,14 +102,22 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className={`border-t lg:hidden ${scrolled ? 'border-white/10 bg-[#0D1429]' : 'border-white/10 bg-navy/95 backdrop-blur-md'}`}>
+        <div className={`border-t lg:hidden ${
+          isLightHeader
+            ? 'border-gray-100 bg-white'
+            : scrolled
+              ? 'border-white/10 bg-[#0D1429]'
+              : 'border-white/10 bg-navy/95 backdrop-blur-md'
+        }`}>
           <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body max-md:px-5">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 to={link.href}
                 className={`rounded-lg px-3 py-3 text-base transition-colors ${
-                  scrolled ? 'text-white hover:bg-white/10' : 'text-white hover:bg-white/10'
+                  isLightHeader
+                    ? 'text-[#0F172A] hover:bg-gray-50'
+                    : 'text-white hover:bg-white/10'
                 }`}
                 onClick={() => setMobileOpen(false)}
               >

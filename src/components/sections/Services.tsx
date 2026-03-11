@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SectionHeading from '../ui/SectionHeading'
 import chattingIcon from '../../assets/images/chatting.svg'
 import growthIcon from '../../assets/images/growth.svg'
@@ -82,13 +83,13 @@ export default function Services() {
           />
 
           {/* Tabs */}
-          <div className="mt-10 mx-auto flex h-[60px] max-w-[1062px] items-center gap-0 rounded-[60px] border border-[#475569] p-[6px] max-md:h-auto max-md:flex-wrap max-md:rounded-2xl">
+          <div className="mt-10 mx-auto flex max-w-[1062px] items-center gap-0 rounded-[60px] border border-[#475569] p-[6px] lg:h-[60px] max-lg:flex-wrap max-lg:rounded-2xl">
             {TABS.map((t, idx) => (
               <button
                 key={t.label}
                 type="button"
                 onClick={() => setActive(idx)}
-                className={`h-[48px] flex-1 cursor-pointer whitespace-nowrap rounded-[40px] px-4 py-2.5 text-center font-body text-sm transition-colors max-md:w-full max-md:rounded-xl ${
+                className={`h-[48px] cursor-pointer rounded-[40px] px-4 py-2.5 text-center font-body text-sm transition-colors lg:flex-1 lg:whitespace-nowrap max-lg:w-full max-lg:rounded-xl ${
                   idx === active
                     ? 'bg-active-tab font-medium text-white'
                     : 'bg-transparent font-normal text-[#475569] hover:bg-gray-50'
@@ -123,9 +124,20 @@ export default function Services() {
               ))}
             </div>
 
-            <p className="mt-6 font-body text-base font-medium text-muted">
-              {tab.summary}
-            </p>
+            <div className="mt-6 flex items-center justify-between">
+              <p className="font-body text-base font-medium text-muted">
+                {tab.summary}
+              </p>
+              <Link
+                to="/services"
+                className="flex flex-shrink-0 items-center gap-2 font-body text-sm font-medium text-primary transition-colors hover:text-primary/80"
+              >
+                Know More
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
