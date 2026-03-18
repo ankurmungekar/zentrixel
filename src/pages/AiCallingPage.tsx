@@ -272,7 +272,7 @@ export default function AiCallingPage() {
             src={callingBanner}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-left"
           />
 
           {/* Content — vertically centred within full viewport height */}
@@ -443,23 +443,22 @@ export default function AiCallingPage() {
             </h2>
             <div className="grid items-start gap-5 lg:grid-cols-[407px_1fr]">
               {/* Left — Tab list */}
-              <div className="flex flex-col max-lg:mb-6 max-lg:flex-row max-lg:gap-2 max-lg:overflow-x-auto">
+              <div className="flex flex-col max-lg:mb-6 max-lg:gap-2">
                 {CAPABILITY_TABS.map((tab) => {
                   const isActive = activeTab === tab.id
                   return (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center justify-between px-3 py-5 text-left transition-all max-lg:shrink-0 max-lg:rounded-lg max-lg:px-4 max-lg:py-3 ${
-                        isActive
-                          ? 'bg-light-bg font-semibold text-navy rounded-lg'
-                          : 'text-navy/70 hover:text-navy'
-                      }`}
+                      className={`flex items-center justify-between px-3 py-5 text-left transition-all max-lg:rounded-lg max-lg:px-4 max-lg:py-3 ${isActive
+                        ? 'bg-light-bg font-semibold text-navy rounded-lg'
+                        : 'text-navy/70 hover:text-navy'
+                        }`}
                       style={{
                         borderBottom: isActive
                           ? '2px solid #19AAE9'
                           : '1px solid #C8CFFF',
-                        fontSize: '20px',
+                        fontSize: '18px',
                         lineHeight: '1.3',
                         fontFamily: 'Inter, sans-serif',
                       }}
@@ -565,127 +564,127 @@ export default function AiCallingPage() {
             <div className="mx-auto max-w-[1440px] px-14 py-14 max-md:px-5 rounded-2xl relative" style={{
               background: 'linear-gradient(238deg, #103592 2%, #0F172A 94%)',
             }}>
-              <div className="absolute bottom-0 left-0 w-[450px] h-[350px] mb-[8px]">
+              <div className="absolute bottom-0 left-0 w-[450px] h-[350px] mb-[8px] max-md:hidden">
                 <img
                   src={AIChatExample}
                   alt="AI voice conversation example"
                 />
               </div>
               <div className="grid items-start gap-12 lg:grid-cols-2">
-              {/* Left: heading + image */}
-              <div>
-                <h2 className="font-heading text-4xl font-semibold leading-snug text-white max-md:text-3xl">
-                  Example AI Voice Conversation
-                </h2>
-                <p className="mt-4 font-body text-base leading-relaxed text-white/70">
-                  Below is a simplified example of how an AI voice agent interacts with customers.
-                </p>
-                <p className="mt-3 font-body text-base leading-relaxed text-white/70">
-                  This demonstrates how conversational AI can manage natural business conversations
-                  without human intervention.
-                </p>
+                {/* Left: heading + image */}
+                <div>
+                  <h2 className="font-heading text-4xl font-semibold leading-snug text-white max-md:text-3xl">
+                    Example AI Voice Conversation
+                  </h2>
+                  <p className="mt-4 font-body text-base leading-relaxed text-white/70">
+                    Below is a simplified example of how an AI voice agent interacts with customers.
+                  </p>
+                  <p className="mt-3 font-body text-base leading-relaxed text-white/70">
+                    This demonstrates how conversational AI can manage natural business conversations
+                    without human intervention.
+                  </p>
+                </div>
+
+                {/* Right: chat UI */}
+                <div className="flex flex-col gap-4">
+                  {/* Customer message 1 */}
+                  <div className="flex flex-col items-start gap-2">
+                    <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
+                      Customer
+                    </span>
+                    <div
+                      className="rounded-lg p-3 font-body text-sm text-white"
+                      style={{
+                        background: 'rgba(255,255,255,0.2)',
+                        border: '1px solid rgba(255,255,255,0.5)',
+                      }}
+                    >
+                      Hi, I want to schedule a service appointment.
+                    </div>
+                  </div>
+
+                  {/* AI response 1 */}
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
+                      AI Voice Agent
+                    </span>
+                    <div
+                      className="rounded-lg p-3 font-body text-sm text-white"
+                      style={{
+                        background: 'rgba(25, 170, 233, 0.2)',
+                        border: '1px solid #19AAE9',
+                      }}
+                    >
+                      Sure. May I know your preferred date and time?
+                    </div>
+                  </div>
+
+                  {/* Customer message 2 */}
+                  <div className="flex flex-col items-start gap-2">
+                    <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
+                      Customer
+                    </span>
+                    <div
+                      className="rounded-lg p-3 font-body text-sm text-white"
+                      style={{
+                        background: 'rgba(255,255,255,0.2)',
+                        border: '1px solid rgba(255,255,255,0.5)',
+                      }}
+                    >
+                      Tomorrow morning.
+                    </div>
+                  </div>
+
+                  {/* AI response 2 */}
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
+                      AI Voice Agent
+                    </span>
+                    <div
+                      className="rounded-lg p-3 font-body text-sm text-white"
+                      style={{
+                        background: 'rgba(25, 170, 233, 0.2)',
+                        border: '1px solid #19AAE9',
+                      }}
+                    >
+                      I found availability at 10:30 AM. Would you like me to confirm the appointment?
+                    </div>
+                  </div>
+
+                  {/* Customer message 3 */}
+                  <div className="flex flex-col items-start gap-2">
+                    <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
+                      Customer
+                    </span>
+                    <div
+                      className="rounded-lg p-3 font-body text-sm text-white"
+                      style={{
+                        background: 'rgba(255,255,255,0.2)',
+                        border: '1px solid rgba(255,255,255,0.5)',
+                      }}
+                    >
+                      Yes.
+                    </div>
+                  </div>
+
+                  {/* AI response 3 */}
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
+                      AI Voice Agent
+                    </span>
+                    <div
+                      className="rounded-lg p-3 font-body text-sm text-white"
+                      style={{
+                        background: 'rgba(25, 170, 233, 0.2)',
+                        border: '1px solid #19AAE9',
+                      }}
+                    >
+                      Your appointment has been successfully scheduled. A confirmation message will be
+                      sent shortly.
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              {/* Right: chat UI */}
-              <div className="flex flex-col gap-4">
-                {/* Customer message 1 */}
-                <div className="flex flex-col items-start gap-2">
-                  <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
-                    Customer
-                  </span>
-                  <div
-                    className="rounded-lg p-3 font-body text-sm text-white"
-                    style={{
-                      background: 'rgba(255,255,255,0.2)',
-                      border: '1px solid rgba(255,255,255,0.5)',
-                    }}
-                  >
-                    Hi, I want to schedule a service appointment.
-                  </div>
-                </div>
-
-                {/* AI response 1 */}
-                <div className="flex flex-col items-end gap-2">
-                  <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
-                    AI Voice Agent
-                  </span>
-                  <div
-                    className="rounded-lg p-3 font-body text-sm text-white"
-                    style={{
-                      background: 'rgba(25, 170, 233, 0.2)',
-                      border: '1px solid #19AAE9',
-                    }}
-                  >
-                    Sure. May I know your preferred date and time?
-                  </div>
-                </div>
-
-                {/* Customer message 2 */}
-                <div className="flex flex-col items-start gap-2">
-                  <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
-                    Customer
-                  </span>
-                  <div
-                    className="rounded-lg p-3 font-body text-sm text-white"
-                    style={{
-                      background: 'rgba(255,255,255,0.2)',
-                      border: '1px solid rgba(255,255,255,0.5)',
-                    }}
-                  >
-                    Tomorrow morning.
-                  </div>
-                </div>
-
-                {/* AI response 2 */}
-                <div className="flex flex-col items-end gap-2">
-                  <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
-                    AI Voice Agent
-                  </span>
-                  <div
-                    className="rounded-lg p-3 font-body text-sm text-white"
-                    style={{
-                      background: 'rgba(25, 170, 233, 0.2)',
-                      border: '1px solid #19AAE9',
-                    }}
-                  >
-                    I found availability at 10:30 AM. Would you like me to confirm the appointment?
-                  </div>
-                </div>
-
-                {/* Customer message 3 */}
-                <div className="flex flex-col items-start gap-2">
-                  <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
-                    Customer
-                  </span>
-                  <div
-                    className="rounded-lg p-3 font-body text-sm text-white"
-                    style={{
-                      background: 'rgba(255,255,255,0.2)',
-                      border: '1px solid rgba(255,255,255,0.5)',
-                    }}
-                  >
-                    Yes.
-                  </div>
-                </div>
-
-                {/* AI response 3 */}
-                <div className="flex flex-col items-end gap-2">
-                  <span className="font-sub-heading text-xs font-medium uppercase tracking-wider text-white/60">
-                    AI Voice Agent
-                  </span>
-                  <div
-                    className="rounded-lg p-3 font-body text-sm text-white"
-                    style={{
-                      background: 'rgba(25, 170, 233, 0.2)',
-                      border: '1px solid #19AAE9',
-                    }}
-                  >
-                    Your appointment has been successfully scheduled. A confirmation message will be
-                    sent shortly.
-                  </div>
-                </div>
-              </div>
-            </div>
             </div>
           </div>
         </section>
@@ -724,7 +723,7 @@ export default function AiCallingPage() {
 
                 <p className="mt-6 font-body text-base leading-relaxed text-muted">
                   Together these technologies enable <strong>human-like voice interactions at enterprise
-                  scale.</strong>
+                    scale.</strong>
                 </p>
               </div>
 
@@ -749,7 +748,7 @@ export default function AiCallingPage() {
                 </h2>
                 <p className="font-body text-base leading-relaxed text-muted">
                   AI voice automation allows organizations to <strong>scale communication without scaling
-                  operational overhead.</strong>
+                    operational overhead.</strong>
                 </p>
               </div>
 
@@ -831,16 +830,16 @@ export default function AiCallingPage() {
         </section>
 
         {/* ── Industries Using AI Voice Automation ───────────────── */}
-        <section>
-          <div className="relative overflow-hidden py-24 mx-auto max-w-[1440px] px-14 max-md:px-5">
-            <div className='mx-auto max-w-[1440px] px-14 py-14 max-md:px-5 relative'>
+        <section className="py-16 max-md:py-10">
+          <div className="relative mx-auto max-w-[1440px] px-14 max-md:px-5">
+            <div className="relative overflow-hidden rounded-2xl px-14 py-14 max-md:px-5 max-md:py-10">
               <img
                 src={industriesUsingAiBg}
                 alt=""
                 aria-hidden="true"
                 className="absolute inset-0 h-full w-full object-cover rounded-2xl"
               />
-              <div className="relative mx-auto max-w-[1440px] px-14 max-md:px-5">
+              <div className="relative">
                 <h2 className="text-center font-heading text-4xl font-semibold leading-snug text-[#000000] max-md:text-3xl">
                   Industries Using AI Voice Automation
                 </h2>
@@ -848,25 +847,22 @@ export default function AiCallingPage() {
                   AI voice automation is rapidly being adopted across multiple industries.
                 </p>
 
-                <div className="mt-14 max-md:mt-10">
-                  {/* Row 1 — 3 items */}
-                  <div
-                    className="grid grid-cols-3 max-md:grid-cols-1"
-                    style={{ borderBottom: '1px solid rgba(0,0,0,0.2)' }}
-                  >
+                <div className="mt-14 max-md:mt-8">
+                  {/* Row 1 — 3 items desktop, 1 item per row on mobile */}
+                  <div className="grid grid-cols-1 md:grid-cols-3" style={{ borderBottom: '1px solid rgba(0,0,0,0.2)' }}>
                     {INDUSTRIES_ROW1.map((industry, i) => (
                       <div
                         key={industry.name}
-                        className="flex items-center gap-5 px-8 py-7 max-md:px-4 max-md:py-5"
-                        style={{
-                          borderRight:
-                            i < INDUSTRIES_ROW1.length - 1
-                              ? '1px solid rgba(0,0,0,0.2)'
-                              : 'none',
-                        }}
+                        className={[
+                          'flex items-center gap-4 px-6 py-5 max-md:px-4 max-md:py-4',
+                          // on desktop: right border between items
+                          i < INDUSTRIES_ROW1.length - 1 ? 'md:border-r md:border-r-black/20' : '',
+                          // on mobile: bottom border between every item
+                          i < INDUSTRIES_ROW1.length - 1 ? 'max-md:border-b max-md:border-b-black/20' : '',
+                        ].join(' ')}
                       >
                         <div
-                          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg"
+                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg"
                           style={{ background: industry.color }}
                         >
                           {industry.icon}
@@ -878,21 +874,21 @@ export default function AiCallingPage() {
                     ))}
                   </div>
 
-                  {/* Row 2 — 4 items */}
-                  <div className="grid grid-cols-4 max-md:grid-cols-2">
+                  {/* Row 2 — 4 items desktop, 1 item per row on mobile */}
+                  <div className="grid grid-cols-1 md:grid-cols-4">
                     {INDUSTRIES_ROW2.map((industry, i) => (
                       <div
                         key={industry.name}
-                        className="flex items-center gap-5 px-8 py-7 max-md:px-4 max-md:py-5"
-                        style={{
-                          borderRight:
-                            i < INDUSTRIES_ROW2.length - 1
-                              ? '1px solid rgba(0,0,0,0.2)'
-                              : 'none',
-                        }}
+                        className={[
+                          'flex items-center gap-4 px-6 py-5 max-md:px-4 max-md:py-4',
+                          // on desktop: right border between items
+                          i < INDUSTRIES_ROW2.length - 1 ? 'md:border-r md:border-r-black/20' : '',
+                          // on mobile: bottom border between every item except the last
+                          i < INDUSTRIES_ROW2.length - 1 ? 'max-md:border-b max-md:border-b-black/20' : '',
+                        ].join(' ')}
                       >
                         <div
-                          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg"
+                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg"
                           style={{ background: industry.color }}
                         >
                           {industry.icon}
@@ -907,7 +903,7 @@ export default function AiCallingPage() {
 
                 <p className="mx-auto mt-10 max-w-[630px] text-center font-body text-base leading-relaxed text-[#000000]">
                   These industries benefit from <strong>high-volume automated customer communication and
-                  operational efficiency.</strong>
+                    operational efficiency.</strong>
                 </p>
               </div>
             </div>
@@ -954,7 +950,7 @@ export default function AiCallingPage() {
 
                 <p className="mt-6 font-body text-base leading-relaxed text-muted">
                   This allows the AI calling platform to operate as a <strong>natural extension of existing
-                  business systems.</strong>
+                    business systems.</strong>
                 </p>
               </div>
             </div>
@@ -962,10 +958,10 @@ export default function AiCallingPage() {
         </section>
 
         {/* ── Measurable Business Impact ─────────────────────────── */}
-        <section className="relative overflow-hidden py-24 px-24 max-md:py-16">
-          <div className="relative mx-auto max-w-[1440px] px-14 py-14 max-md:px-5 rounded-2xl" style={{
-              background: '#F3F4FB',
-            }}>
+        <section className="relative overflow-hidden py-24 px-6 max-md:py-12 max-md:px-4">
+          <div className="relative mx-auto max-w-[1440px] px-14 py-14 max-md:px-5 max-md:py-10 rounded-2xl" style={{
+            background: '#F3F4FB',
+          }}>
             <h2 className="text-center font-heading text-4xl font-semibold leading-snug text-navy max-md:text-3xl">
               Measurable Business Impact
             </h2>
@@ -974,7 +970,7 @@ export default function AiCallingPage() {
             </p>
 
             {/* All metric cards — unified 3-column grid */}
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               <div
                 className="rounded-2xl p-8"
                 style={{
@@ -1033,7 +1029,7 @@ export default function AiCallingPage() {
               </div>
 
               {/* Centered bottom row — spans all 3 cols, items match column width */}
-              <div className="col-span-3 flex flex-col gap-6 sm:flex-row sm:justify-center">
+              <div className="col-span-full flex flex-col gap-6 sm:flex-row sm:justify-center">
                 <div
                   className="w-full rounded-lg p-6 sm:w-[calc((100%-3rem)/3)]"
                   style={{ background: '#FFFFFF', borderLeft: '4px solid #19AAE9' }}
@@ -1060,7 +1056,7 @@ export default function AiCallingPage() {
 
             <p className="mx-auto mt-10 max-w-[546px] text-center font-body text-base leading-relaxed text-muted">
               AI voice agents transform business communication into a <strong>scalable and measurable
-              engagement channel.</strong>
+                engagement channel.</strong>
             </p>
           </div>
         </section>

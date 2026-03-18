@@ -9,11 +9,11 @@ const QUICK_LINKS = [
 ]
 
 const PRODUCTS = [
-  'AI Chatbot Platform',
-  'AI Calling Platform',
-  'AI Social Engagement Platform',
-  'Smart Facility Management Platform',
-  'Solid Waste Management Platform',
+  { label: 'AI Chatbot Platform', href: '/products' },
+  { label: 'AI Calling Platform', href: '/products/ai-calling' },
+  { label: 'AI Social Engagement Platform', href: '/products' },
+  { label: 'Smart Facility Management Platform', href: '/products' },
+  { label: 'Solid Waste Management Platform', href: '/products' },
 ]
 
 const SERVICES = [
@@ -130,12 +130,12 @@ export default function Footer() {
                 </h3>
                 <ul className="flex flex-col gap-3">
                   {PRODUCTS.map((product) => (
-                    <li key={product}>
+                    <li key={product.label}>
                       <Link
-                        to="/products"
+                        to={product.href}
                         className="font-body text-sm leading-[1.4em] text-[#EFF9FB] transition-colors hover:text-white"
                       >
-                        {product}
+                        {product.label}
                       </Link>
                     </li>
                   ))}
