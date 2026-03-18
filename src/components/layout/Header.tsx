@@ -12,35 +12,72 @@ const NAV_LINKS = [
   { label: 'Contact', href: '/contact' },
 ]
 
-const LIGHT_HEADER_ROUTES = ['/about']
+/**
+ * Header style per route:
+ *  'dark'              – always white bg, black logo, black text (e.g. About)
+ *  'transparent-dark'  – transparent + black logo/text initially → white bg on scroll
+ *  (default)           – transparent + white logo/text initially → navy bg on scroll
+ */
+const ROUTE_HEADER_STYLE: Record<string, 'dark' | 'transparent-dark'> = {
+  '/about': 'dark',
+  '/products/ai-calling': 'transparent-dark',
+}
 
-const SCROLL_THRESHOLD = 176
+const SCROLL_THRESHOLD = 80
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
 
-  const isLightHeader = LIGHT_HEADER_ROUTES.includes(pathname)
+  const headerStyle = ROUTE_HEADER_STYLE[pathname] ?? 'transparent-light'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY >= SCROLL_THRESHOLD)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     setMobileOpen(false)
   }, [pathname])
 
-  const headerBg = isLightHeader
-    ? 'bg-white shadow-[0_4px_8px_rgba(0,0,0,0.05)]'
-    : scrolled
-      ? 'bg-[#0D1429] shadow-md'
-      : 'bg-transparent'
+  // ── computed styles ──────────────────────────────────────────
+  let headerBg: string
+  let textColor: string
+  let useDarkLogo: boolean
 
-  const textColor = isLightHeader ? 'text-[#0F172A]' : 'text-white'
+  if (headerStyle === 'dark') {
+    // Always solid white (About page)
+    headerBg = 'bg-white shadow-[0_4px_8px_rgba(0,0,0,0.05)]'
+    textColor = 'text-[#0F172A]'
+    useDarkLogo = true
+  } else if (headerStyle === 'transparent-dark') {
+    // Transparent → white on scroll (AI Calling page)
+    headerBg = scrolled
+      ? 'bg-white shadow-[0_4px_8px_rgba(0,0,0,0.05)]'
+      : 'bg-transparent'
+    textColor = 'text-[#0F172A]'
+    useDarkLogo = true
+  } else {
+    // Transparent → navy on scroll (Homepage + default)
+    headerBg = scrolled ? 'bg-[#0D1429] shadow-md' : 'bg-transparent'
+    textColor = 'text-white'
+    useDarkLogo = false
+  }
+
+  const mobileBg =
+    headerStyle === 'dark' || headerStyle === 'transparent-dark'
+      ? 'border-gray-100 bg-white'
+      : scrolled
+        ? 'border-white/10 bg-[#0D1429]'
+        : 'border-white/10 bg-navy/95 backdrop-blur-md'
+
+  const mobileLinkColor =
+    headerStyle === 'dark' || headerStyle === 'transparent-dark'
+      ? 'text-[#0F172A] hover:bg-gray-50'
+      : 'text-white hover:bg-white/10'
 
   return (
     <header
@@ -49,14 +86,14 @@ export default function Header() {
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-14 max-md:px-5">
         <Link to="/" aria-label="Zentrixel Home">
           <img
-            src={isLightHeader ? logoBlack : logo}
+            src={useDarkLogo ? logoBlack : logo}
             alt="Zentrixel"
-            className="h-[53px] max-md:h-[40px] mt-[4px]"
+            className="mt-[4px] h-[53px] max-md:h-[40px]"
           />
         </Link>
 
         <nav
-          className={`hidden items-center gap-10 font-body text-base lg:flex transition-colors duration-300 ${textColor}`}
+          className={`hidden items-center gap-10 font-body text-base transition-colors duration-300 lg:flex ${textColor}`}
         >
           {NAV_LINKS.map((link) => (
             <Link
@@ -67,7 +104,13 @@ export default function Header() {
               {link.label}
               {link.hasDropdown && (
                 <svg width="10" height="5" viewBox="0 0 10 5" fill="none">
-                  <path d="M1 1L5 4L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path
+                    d="M1 1L5 4L9 1"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               )}
             </Link>
@@ -84,7 +127,7 @@ export default function Header() {
 
         <button
           type="button"
-          className={`lg:hidden transition-colors duration-300 ${textColor}`}
+          className={`transition-colors duration-300 lg:hidden ${textColor}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -102,23 +145,13 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className={`border-t lg:hidden ${
-          isLightHeader
-            ? 'border-gray-100 bg-white'
-            : scrolled
-              ? 'border-white/10 bg-[#0D1429]'
-              : 'border-white/10 bg-navy/95 backdrop-blur-md'
-        }`}>
+        <div className={`border-t lg:hidden ${mobileBg}`}>
           <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body max-md:px-5">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 to={link.href}
-                className={`rounded-lg px-3 py-3 text-base transition-colors ${
-                  isLightHeader
-                    ? 'text-[#0F172A] hover:bg-gray-50'
-                    : 'text-white hover:bg-white/10'
-                }`}
+                className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -131,7 +164,13 @@ export default function Header() {
             >
               Let's Connect
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M7 17L17 7M17 7H7M17 7V17"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </Link>
           </nav>

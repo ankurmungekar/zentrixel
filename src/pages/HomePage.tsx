@@ -80,7 +80,7 @@ export default function HomePage() {
         <Industries />
         <Testimonials />
         <CTASection />
-        <FAQ />
+        <FAQ showImage heading={'FREQUENTLY\nASKED QUESTIONS'} />
       </main>
     </>
   )

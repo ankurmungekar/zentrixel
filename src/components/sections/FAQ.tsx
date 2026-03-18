@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import faqImage from '../../assets/images/faq.png'
 
-const FAQS = [
+export interface FAQItem {
+  question: string
+  answer: string
+}
+
+const DEFAULT_FAQS: FAQItem[] = [
   {
     question: 'How much does custom software development cost?',
     answer:
@@ -34,27 +39,40 @@ const FAQS = [
   },
 ]
 
-export default function FAQ() {
-  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set(FAQS.map((_, i) => i)))
+interface FAQProps {
+  items?: FAQItem[]
+  showImage?: boolean
+  heading?: string
+}
+
+export default function FAQ({ items, showImage = false, heading }: FAQProps = {}) {
+  const faqs = items ?? DEFAULT_FAQS
+  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set([0]))
 
   return (
     <section className="bg-white py-20 max-md:py-12" id="faq">
       <div className="mx-auto max-w-[1440px] px-14 max-md:px-6">
-        <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
-          <div className="lg:w-[407px] lg:flex-shrink-0 lg:pt-[15px]">
-            <h2 className="whitespace-pre-line font-heading text-4xl font-semibold leading-[1.28em] text-navy max-md:text-3xl">
-              {'FREQUENTLY\nASKED QUESTIONS'}
-            </h2>
-            <img
-              src={faqImage}
-              alt="Frequently asked questions"
-              className="mt-8 w-full max-w-[380px] object-contain max-lg:hidden"
-              loading="lazy"
-            />
-          </div>
+        <div className={`${showImage ? 'flex flex-col gap-12 lg:flex-row lg:gap-20' : ''}`}>
+          {(showImage || heading) && (
+            <div className={`lg:pt-[15px] ${showImage ? 'lg:w-[407px] lg:flex-shrink-0' : ''}`}>
+              {heading && (
+                <h2 className="whitespace-pre-line font-heading text-4xl font-semibold leading-[1.28em] text-navy max-md:text-3xl">
+                  {heading}
+                </h2>
+              )}
+              {showImage && (
+                <img
+                  src={faqImage}
+                  alt="Frequently asked questions"
+                  className={`w-full max-w-[380px] object-contain max-lg:hidden ${heading ? 'mt-8' : ''}`}
+                  loading="lazy"
+                />
+              )}
+            </div>
+          )}
 
           <div className="flex-1">
-            {FAQS.map((faq, idx) => {
+            {faqs.map((faq, idx) => {
               const isOpen = openIndices.has(idx)
               return (
                 <div key={idx}>
