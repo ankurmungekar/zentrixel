@@ -17,10 +17,11 @@ const PRODUCTS = [
 ]
 
 const SERVICES = [
-  'Artificial Intelligence & Automation',
-  'Custom Software Development',
-  'Technology Consulting & Delivery Management',
-  'Cloud & DevOps',
+  { label: 'AI & ML Solutions', href: '/services?tab=ai-and-ml' },
+  { label: 'Web & Mobile Apps', href: '/services?tab=web-and-mobile' },
+  { label: 'Cloud Computing Solutions', href: '/services?tab=cloud' },
+  { label: 'Automation Solutions', href: '/services?tab=automation' },
+  { label: 'Database Management', href: '/services?tab=database' },
 ]
 
 export default function Footer() {
@@ -110,12 +111,12 @@ export default function Footer() {
                   </h3>
                   <ul className="flex flex-col gap-3">
                     {SERVICES.map((service) => (
-                      <li key={service}>
+                      <li key={service.label}>
                         <Link
-                          to="/services"
+                          to={service.href}
                           className="font-body text-sm leading-[1.4em] text-[#EFF9FB] transition-colors hover:text-white"
                         >
-                          {service}
+                          {service.label}
                         </Link>
                       </li>
                     ))}

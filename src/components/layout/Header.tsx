@@ -20,6 +20,9 @@ const NAV_LINKS = [
  */
 const ROUTE_HEADER_STYLE: Record<string, 'dark' | 'transparent-dark'> = {
   '/about': 'dark',
+  '/contact': 'dark',
+  '/insight': 'dark',
+  '/services': 'dark',
   '/products/ai-calling': 'transparent-dark',
 }
 
