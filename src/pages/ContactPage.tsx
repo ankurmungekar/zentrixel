@@ -1,6 +1,113 @@
+import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 
+// ── Types ─────────────────────────────────────────────────────
+interface FormFields {
+  name: string
+  email: string
+  phone: string
+  company: string
+  message: string
+}
+type FormErrors = Partial<FormFields>
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
+
+// ── Validation ────────────────────────────────────────────────
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PHONE_RE = /^[+\d\s\-().]{7,20}$/
+
+function validate(fields: FormFields): FormErrors {
+  const errors: FormErrors = {}
+  if (!fields.name.trim() || fields.name.trim().length < 2) {
+    errors.name = 'Full name is required.'
+  }
+  if (!EMAIL_RE.test(fields.email.trim())) {
+    errors.email = 'Please enter a valid email address.'
+  }
+  if (fields.phone && !PHONE_RE.test(fields.phone.trim())) {
+    errors.phone = 'Please enter a valid phone number.'
+  }
+  if (!fields.message.trim() || fields.message.trim().length < 10) {
+    errors.message = 'Message must be at least 10 characters.'
+  }
+  return errors
+}
+
+// ── Input + Textarea components ───────────────────────────────
+function Field({
+  label, error, children,
+}: { label: string; error?: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <label className="font-body text-xs font-semibold uppercase tracking-wide text-muted">
+        {label}
+      </label>
+      {children}
+      {error && <p className="font-body text-xs text-red-500">{error}</p>}
+    </div>
+  )
+}
+
+const inputCls = (hasError: boolean) =>
+  `rounded-lg border px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-primary ${hasError ? 'border-red-400 bg-red-50' : 'border-gray-200 bg-white'
+  }`
+
+// ── Page ──────────────────────────────────────────────────────
 export default function ContactPage() {
+  const [fields, setFields] = useState<FormFields>({
+    name: '', email: '', phone: '', company: '', message: '',
+  })
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+  const [serverError, setServerError] = useState<string>('')
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target
+    setFields((prev) => ({ ...prev, [name]: value }))
+    // Clear field error on change
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const validationErrors = validate(fields)
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
+
+    setStatus('loading')
+    setServerError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fields),
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        // Server-side validation errors
+        if (res.status === 422 && data.errors) {
+          setErrors(data.errors)
+          setStatus('idle')
+        } else {
+          throw new Error(data.error || 'Something went wrong.')
+        }
+        return
+      }
+
+      setStatus('success')
+      setFields({ name: '', email: '', phone: '', company: '', message: '' })
+      setErrors({})
+    } catch (err: unknown) {
+      setStatus('error')
+      setServerError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    }
+  }
+
   return (
     <>
       <Helmet>
@@ -13,21 +120,23 @@ export default function ContactPage() {
 
       <main>
         {/* ── Hero ──────────────────────────────────────────────── */}
-        <section className="bg-navy pt-32 pb-20">
+        <section className="bg-navy pt-32 pb-20 max-md:pt-28 max-md:pb-14">
           <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
             <p className="font-sub-heading text-lg text-primary">Contact Us</p>
             <h1 className="mt-3 max-w-[700px] font-heading text-4xl font-semibold leading-snug text-white max-md:text-3xl">
               We'd Love to Hear From You
             </h1>
-            <p className="mt-6 max-w-[680px] font-body text-lg leading-relaxed text-white/70 max-md:text-base">Let's connect and explore how we can turn your ideas into innovative, high-impact digital solutions.</p>
             <p className="mt-6 max-w-[680px] font-body text-lg leading-relaxed text-white/70 max-md:text-base">
+              Let's connect and explore how we can turn your ideas into innovative, high-impact digital solutions.
+            </p>
+            <p className="mt-4 max-w-[680px] font-body text-base leading-relaxed text-white/60 max-md:text-sm">
               Whether you have a question, need a consultation, or want to learn more about our
               services — Zentrixel is your one-stop partner for technological excellence.
             </p>
           </div>
         </section>
 
-        {/* ── Form + Info ──────────────────────────────────────── */}
+        {/* ── Form + Info ────────────────────────────────────────── */}
         <section className="py-20 max-md:py-12">
           <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
             <div className="grid gap-16 lg:grid-cols-2">
@@ -35,72 +144,135 @@ export default function ContactPage() {
               {/* Left — Form */}
               <div>
                 <h2 className="font-heading text-2xl font-semibold text-navy">Drop us a line!</h2>
-                <p className="mt-2 font-body text-base text-muted">Sign up for our email list for updates.</p>
+                <p className="mt-2 font-body text-base text-muted">
+                  Fill in the form and we'll get back to you within 24 hours.
+                </p>
 
-                <form className="mt-8 flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      className="rounded-lg border border-gray-200 px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-primary"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      className="rounded-lg border border-gray-200 px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-primary"
-                    />
+                {/* Success banner */}
+                {status === 'success' && (
+                  <div className="mt-6 flex items-start gap-3 rounded-xl border border-green-200 bg-green-50 px-5 py-4">
+                    <svg className="mt-0.5 shrink-0 text-green-600" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <div>
+                      <p className="font-body text-sm font-semibold text-green-800">Message sent!</p>
+                      <p className="mt-0.5 font-body text-sm text-green-700">
+                        Thank you for reaching out. We'll be in touch shortly.
+                      </p>
+                    </div>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Company Name"
-                    className="rounded-lg border border-gray-200 px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-primary"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Phone Number"
-                    className="rounded-lg border border-gray-200 px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-primary"
-                  />
-                  <textarea
-                    placeholder="Tell us about your project or question"
-                    rows={5}
-                    className="resize-none rounded-lg border border-gray-200 px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-primary"
-                  />
-                  <button
-                    type="submit"
-                    className="inline-flex h-12 w-fit items-center justify-center rounded-[30px] bg-primary px-8 font-body text-base text-white transition-colors hover:bg-primary/90"
-                  >
-                    Send Message
-                  </button>
-                  <p className="font-body text-xs leading-relaxed text-muted">
-                    This site is protected by reCAPTCHA and the Google{' '}
-                    <a
-                      href="https://policies.google.com/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-primary"
+                )}
+
+                {/* Error banner */}
+                {status === 'error' && (
+                  <div className="mt-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-5 py-4">
+                    <svg className="mt-0.5 shrink-0 text-red-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 8v4M12 16h.01" strokeLinecap="round" />
+                    </svg>
+                    <div>
+                      <p className="font-body text-sm font-semibold text-red-800">Failed to send</p>
+                      <p className="mt-0.5 font-body text-sm text-red-700">{serverError}</p>
+                    </div>
+                  </div>
+                )}
+
+                <form className="mt-8 flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
+                  {/* Name + Email row */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Full Name *" error={errors.name}>
+                      <input
+                        id="name" name="name" type="text"
+                        placeholder="Your name"
+                        value={fields.name}
+                        onChange={handleChange}
+                        className={inputCls(!!errors.name)}
+                        autoComplete="name"
+                      />
+                    </Field>
+                    <Field label="Email Address *" error={errors.email}>
+                      <input
+                        id="email" name="email" type="email"
+                        placeholder="john@company.com"
+                        value={fields.email}
+                        onChange={handleChange}
+                        className={inputCls(!!errors.email)}
+                        autoComplete="email"
+                      />
+                    </Field>
+                  </div>
+
+                  {/* Company + Phone row */}
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Company Name" error={errors.company}>
+                      <input
+                        id="company" name="company" type="text"
+                        placeholder="Your company"
+                        value={fields.company}
+                        onChange={handleChange}
+                        className={inputCls(!!errors.company)}
+                        autoComplete="organization"
+                      />
+                    </Field>
+                    <Field label="Phone Number" error={errors.phone}>
+                      <input
+                        id="phone" name="phone" type="tel"
+                        placeholder="+91 0000000000"
+                        value={fields.phone}
+                        onChange={handleChange}
+                        className={inputCls(!!errors.phone)}
+                        autoComplete="tel"
+                      />
+                    </Field>
+                  </div>
+
+                  {/* Message */}
+                  <Field label="Message *" error={errors.message}>
+                    <textarea
+                      id="message" name="message"
+                      placeholder="Tell us about your project or question…"
+                      rows={5}
+                      value={fields.message}
+                      onChange={handleChange}
+                      className={`resize-none ${inputCls(!!errors.message)}`}
+                    />
+                  </Field>
+
+                  {/* Submit */}
+                  <div className="flex flex-col gap-3">
+                    <button
+                      type="submit"
+                      disabled={status === 'loading'}
+                      className="inline-flex h-12 w-fit items-center justify-center gap-2.5 rounded-[30px] bg-primary px-8 font-body text-base text-white transition-colors hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Privacy Policy
-                    </a>{' '}
-                    and{' '}
-                    <a
-                      href="https://policies.google.com/terms"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-primary"
-                    >
-                      Terms of Service
-                    </a>{' '}
-                    apply.
-                  </p>
+                      {status === 'loading' ? (
+                        <>
+                          <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" />
+                          </svg>
+                          Sending…
+                        </>
+                      ) : (
+                        'Send Message'
+                      )}
+                    </button>
+
+                    <p className="font-body text-xs leading-relaxed text-muted">
+                      This site is protected by reCAPTCHA and the Google{' '}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Privacy Policy</a>{' '}
+                      and{' '}
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Terms of Service</a>{' '}
+                      apply.
+                    </p>
+                  </div>
                 </form>
               </div>
 
               {/* Right — Info */}
               <div className="flex flex-col gap-8">
                 <div>
-                  <h2 className="font-heading text-2xl font-semibold text-navy">
-                    Get in Touch
-                  </h2>
+                  <h2 className="font-heading text-2xl font-semibold text-navy">Get in Touch</h2>
                   <p className="mt-3 font-body text-base leading-relaxed text-muted">
                     We're here to help. Reach out to us through any of the channels below.
                   </p>

@@ -28,8 +28,10 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [industriesOpen, setIndustriesOpen] = useState(false)
+  const [productsOpen, setProductsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const industriesDropdownRef = useRef<HTMLDivElement>(null)
+  const productsDropdownRef = useRef<HTMLDivElement>(null)
   const { pathname } = useLocation()
 
   const headerStyle = getHeaderStyle(pathname)
@@ -45,6 +47,7 @@ export default function Header() {
     setMobileOpen(false)
     setServicesOpen(false)
     setIndustriesOpen(false)
+    setProductsOpen(false)
   }, [pathname])
 
   // Close dropdowns when clicking outside
@@ -55,6 +58,9 @@ export default function Header() {
       }
       if (industriesDropdownRef.current && !industriesDropdownRef.current.contains(e.target as Node)) {
         setIndustriesOpen(false)
+      }
+      if (productsDropdownRef.current && !productsDropdownRef.current.contains(e.target as Node)) {
+        setProductsOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -232,6 +238,67 @@ export default function Header() {
               </div>
             )}
           </div>
+          {/* Products dropdown */}
+          <div className="relative" ref={productsDropdownRef}>
+            <button
+              type="button"
+              className="flex items-center gap-2.5 transition-colors hover:text-primary"
+              onClick={() => setProductsOpen((o) => !o)}
+              aria-expanded={productsOpen}
+              aria-haspopup="true"
+            >
+              Products
+              <svg
+                width="10" height="5" viewBox="0 0 10 5" fill="none"
+                className={`transition-transform duration-200 ${productsOpen ? 'rotate-180' : ''}`}
+              >
+                <path d="M1 1L5 4L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            {productsOpen && (
+              <div
+                className={`absolute left-1/2 top-full mt-3 -translate-x-1/2 rounded-xl border bg-white shadow-xl ${dropdownBorderColor}`}
+                style={{ minWidth: '260px' }}
+              >
+                {/* Arrow */}
+                <div className="absolute -top-[6px] left-1/2 -translate-x-1/2">
+                  <div className="h-3 w-3 rotate-45 border-l border-t border-gray-100 bg-white" />
+                </div>
+
+                <div className="p-3">
+                  <p className="mb-2 px-1 font-sub-heading text-[11px] font-semibold uppercase tracking-widest text-muted">
+                    Our Products
+                  </p>
+                  <Link
+                    to="/products"
+                    className="group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-light-bg"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </span>
+                    <div>
+                      <p className="font-body text-sm font-medium text-navy transition-colors group-hover:text-primary">AI Chatbot Platform</p>
+                      <p className="font-body text-xs text-muted">Conversational AI for your business</p>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/products/ai-calling"
+                    className="group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-light-bg"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </span>
+                    <div>
+                      <p className="font-body text-sm font-medium text-navy transition-colors group-hover:text-primary">AI Calling Platform</p>
+                      <p className="font-body text-xs text-muted">Automated voice AI at scale</p>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
           <Link to="/insight" className="transition-colors hover:text-primary">Insight</Link>
           <Link to="/contact" className="transition-colors hover:text-primary">Contact</Link>
         </nav>
@@ -315,6 +382,27 @@ export default function Header() {
                 ))}
               </div>
             </div>
+            {/* Mobile Products group */}
+            <div>
+              <p className={`rounded-lg px-3 py-3 text-base font-medium ${mobileLinkColor}`}>Products</p>
+              <div className="ml-4 mt-1 flex flex-col gap-0.5">
+                <Link
+                  to="/products"
+                  className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  AI Chatbot Platform
+                </Link>
+                <Link
+                  to="/products/ai-calling"
+                  className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  AI Calling Platform
+                </Link>
+              </div>
+            </div>
+
             <Link to="/insight" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Insight</Link>
             <Link to="/contact" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Contact</Link>
 
