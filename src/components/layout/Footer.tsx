@@ -17,11 +17,24 @@ const PRODUCTS = [
 ]
 
 const SERVICES = [
-  { label: 'AI & ML Solutions', href: '/services?tab=ai-and-ml' },
-  { label: 'Web & Mobile Apps', href: '/services?tab=web-and-mobile' },
-  { label: 'Cloud Computing Solutions', href: '/services?tab=cloud' },
-  { label: 'Automation Solutions', href: '/services?tab=automation' },
-  { label: 'Database Management', href: '/services?tab=database' },
+  { label: 'AI & ML Solutions', href: '/services/ai-and-ml-solutions' },
+  { label: 'Web & Mobile Apps', href: '/services/web-and-mobile-apps' },
+  { label: 'Cloud Computing', href: '/services/cloud-computing-solutions' },
+  { label: 'Automation Solutions', href: '/services/automation-solutions' },
+  { label: 'Database Management', href: '/services/database-management' },
+  { label: 'DevOps Solutions', href: '/services/devops-solutions' },
+  { label: 'UI & UX Design', href: '/services/ui-and-ux-design' },
+  { label: 'Digital Marketing', href: '/services/digital-marketing' },
+  { label: 'Virtual CTO & IT Consult', href: '/services/virtual-cto-x-it-consult' },
+]
+
+const INDUSTRIES_LINKS = [
+  { label: 'AI Data-Driven Company', href: '/industries/ai-data-driven-company' },
+  { label: 'Startup', href: '/industries/startup' },
+  { label: 'FinTech', href: '/industries/fintech' },
+  { label: 'SMEs', href: '/industries/smes' },
+  { label: 'BFSI', href: '/industries/bfsi' },
+  { label: 'Real Estate', href: '/industries/real-estate' },
 ]
 
 export default function Footer() {
@@ -84,7 +97,7 @@ export default function Footer() {
 
           {/* Right: Link Columns + Follow Us */}
           <div className="flex flex-1 flex-col gap-12 lg:py-4 lg:pl-16">
-            <div className="grid flex-1 grid-cols-1 gap-x-16 gap-y-6 sm:grid-cols-2">
+            <div className="grid flex-1 grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-3">
               {/* Column 1: Quick Links + Services stacked */}
               <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
@@ -137,6 +150,25 @@ export default function Footer() {
                         className="font-body text-sm leading-[1.4em] text-[#EFF9FB] transition-colors hover:text-white"
                       >
                         {product.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Column 3: Industries */}
+              <div className="flex flex-col gap-6">
+                <h3 className="font-body text-sm font-medium tracking-[0.04em] text-primary">
+                  Industries
+                </h3>
+                <ul className="flex flex-col gap-3">
+                  {INDUSTRIES_LINKS.map((ind) => (
+                    <li key={ind.label}>
+                      <Link
+                        to={ind.href}
+                        className="font-body text-sm leading-[1.4em] text-[#EFF9FB] transition-colors hover:text-white"
+                      >
+                        {ind.label}
                       </Link>
                     </li>
                   ))}

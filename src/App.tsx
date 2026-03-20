@@ -1,13 +1,14 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'))
 const IndustriesPage = lazy(() => import('./pages/IndustriesPage'))
+const IndustryDetailPage = lazy(() => import('./pages/IndustryDetailPage'))
 const ProductsPage = lazy(() => import('./pages/ProductsPage'))
 const InsightPage = lazy(() => import('./pages/InsightPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
@@ -33,7 +34,9 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/industries" element={<IndustriesPage />} />
+          <Route path="/industries/:slug" element={<IndustryDetailPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/insight" element={<InsightPage />} />
           <Route path="/contact" element={<ContactPage />} />

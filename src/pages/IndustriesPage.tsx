@@ -1,33 +1,6 @@
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-
-const INDUSTRIES = [
-  {
-    title: 'Banking, Financial Services & Fintech',
-    description:
-      'Secure, compliant digital systems for banking operations, payment processing, risk management, and financial automation.',
-  },
-  {
-    title: 'Healthcare & Life Sciences',
-    description:
-      'HIPAA-compliant platforms for patient management, clinical workflows, telemedicine, and healthcare data analytics.',
-  },
-  {
-    title: 'Insurance',
-    description:
-      'Claims automation, underwriting platforms, policy management systems, and AI-driven fraud detection solutions.',
-  },
-  {
-    title: 'Real Estate & Facilities',
-    description:
-      'Smart facility management, property operations platforms, IoT integration, and real-time asset tracking systems.',
-  },
-  {
-    title: 'Enterprise & B2B Organizations',
-    description:
-      'Scalable ERP solutions, workflow automation, supply chain digitization, and enterprise integration platforms.',
-  },
-]
+import { Helmet } from 'react-helmet-async'
+import INDUSTRIES from '../data/industries'
 
 export default function IndustriesPage() {
   return (
@@ -36,44 +9,54 @@ export default function IndustriesPage() {
         <title>Industries | Zentrixel</title>
         <meta
           name="description"
-          content="Zentrixel serves Banking, Healthcare, Insurance, Real Estate, and Enterprise organizations with reliable, scalable digital solutions."
+          content="Zentrixel serves AI-driven companies, startups, FinTech, SMEs, BFSI, and Real Estate with reliable, scalable digital solutions."
         />
       </Helmet>
 
       <main>
-        <section className="bg-navy pt-32 pb-20">
+        {/* ── Hero ────────────────────────────────────────────── */}
+        <section className="bg-navy pt-32 pb-20 max-md:pt-28 max-md:pb-14">
           <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
             <p className="font-sub-heading text-lg text-primary">Industries</p>
             <h1 className="mt-3 max-w-[700px] font-heading text-4xl font-semibold leading-snug text-white max-md:text-3xl">
-              Industries Where Reliability Matters
+              Industries Where Expertise Meets Impact
             </h1>
             <p className="mt-6 max-w-[680px] font-body text-lg leading-relaxed text-white/70 max-md:text-base">
-              Powering digital transformation across high-impact, regulated
-              sectors where security, compliance, and uptime are non-negotiable.
+              Powering digital transformation across high-impact sectors where performance, compliance,
+              and user experience are non-negotiable.
             </p>
           </div>
         </section>
 
+        {/* ── Industry Grid ───────────────────────────────────── */}
         <section className="py-20 max-md:py-12">
           <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {INDUSTRIES.map((industry) => (
-                <div
-                  key={industry.title}
-                  className="rounded-xl border border-gray-100 bg-white p-8 transition-shadow hover:shadow-lg"
+                <Link
+                  key={industry.slug}
+                  to={`/industries/${industry.slug}`}
+                  className="group flex flex-col rounded-xl border border-gray-100 bg-white p-8 transition-all hover:border-primary/20 hover:shadow-lg max-md:p-6"
                 >
-                  <h2 className="font-heading text-xl font-semibold text-navy">
-                    {industry.title}
+                  <h2 className="font-heading text-xl font-semibold text-navy transition-colors group-hover:text-primary max-md:text-lg">
+                    {industry.navLabel}
                   </h2>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-muted">
-                    {industry.description}
+                  <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-muted">
+                    {industry.intro.slice(0, 120)}…
                   </p>
-                </div>
+                  <span className="mt-5 inline-flex items-center gap-1.5 font-body text-sm font-medium text-primary">
+                    Learn more
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
+        {/* ── CTA Banner ──────────────────────────────────────── */}
         <section className="bg-light-bg py-20 max-md:py-12">
           <div className="mx-auto max-w-[1440px] px-14 text-center max-md:px-5">
             <h2 className="font-heading text-3xl font-semibold text-navy max-md:text-2xl">
