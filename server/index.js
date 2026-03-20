@@ -23,16 +23,22 @@ const allowedOrigins = [
   process.env.ALLOWED_ORIGIN,
 ].filter(Boolean)
 
-// In production requests are same-origin so CORS is not needed.
-// In dev, allow the Vite dev server origin.
-if (!isProd) {
-  app.use(
-    cors({
-      origin: ['http://localhost:5173', 'http://localhost:4173'],
-      methods: ['POST'],
-    })
-  )
-}
+// Always apply CORS — frontend and backend are on different origins.
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      // Allow no-origin requests (e.g. curl, same-origin future)
+      if (!origin) return cb(null, true)
+      const allowed = isProd
+        ? [process.env.ALLOWED_ORIGIN].filter(Boolean)
+        : ['http://localhost:5173', 'http://localhost:4173']
+      if (allowed.includes(origin)) return cb(null, true)
+      cb(new Error(`CORS: origin ${origin} not allowed`))
+    },
+    methods: ['POST', 'GET', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
+  })
+)
 
 // Rate-limit: max 10 contact submits per 15 min per IP
 const contactLimiter = rateLimit({

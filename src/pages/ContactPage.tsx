@@ -81,7 +81,8 @@ export default function ContactPage() {
     setStatus('loading')
     setServerError('')
     try {
-      const res = await fetch('/api/contact', {
+      const API_BASE = import.meta.env.VITE_API_URL ?? ''
+      const res = await fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(fields),
