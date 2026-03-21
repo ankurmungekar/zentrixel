@@ -31,7 +31,7 @@ const INDUSTRIES_ROW2 = [
   {
     title: 'Real Estate &\nFacilities',
     gradient: 'radial-gradient(circle at 89% 100%, rgba(111,174,164,1) 0%, rgba(111,174,164,0.2) 100%)',
-    width: 'calc(40% - 15px)',  
+    width: 'calc(40% - 15px)',
     icon: realEstateImg,
   },
   {
@@ -97,8 +97,7 @@ function IndustryCard({
   mobile?: boolean
 }) {
   return (
-    <Link
-      to="/industries"
+    <div
       className="group relative flex h-[293px] flex-col justify-between overflow-hidden rounded-xl p-[30px] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl max-md:h-[240px] max-md:p-5"
       style={{
         background: industry.gradient,
@@ -121,6 +120,6 @@ function IndustryCard({
         className="absolute bottom-0 right-0 h-[75%] w-auto object-contain"
         loading="lazy"
       />
-    </Link>
+    </div>
   )
 }

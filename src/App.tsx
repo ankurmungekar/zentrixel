@@ -15,6 +15,7 @@ const ContactPage = lazy(() => import('./pages/ContactPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 const TermsPage = lazy(() => import('./pages/TermsPage'))
 const AiCallingPage = lazy(() => import('./pages/AiCallingPage'))
+const AiChatbotPage = lazy(() => import('./pages/AiChatbotPage'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/products/ai-calling" element={<AiCallingPage />} />
+          <Route path="/products/ai-chatbot" element={<AiChatbotPage />} />
         </Routes>
       </Suspense>
       <Footer />

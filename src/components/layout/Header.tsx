@@ -17,7 +17,7 @@ function getHeaderStyle(pathname: string): 'dark' | 'transparent-dark' | 'transp
   if (pathname.startsWith('/industries')) return 'dark'
   const DARK: string[] = ['/about', '/contact', '/insight']
   if (DARK.includes(pathname)) return 'dark'
-  if (pathname === '/products/ai-calling') return 'transparent-dark'
+  if (pathname === '/products/ai-calling' || pathname === '/products/ai-chatbot') return 'transparent-dark'
   return 'transparent-light'
 }
 
@@ -115,7 +115,7 @@ export default function Header() {
 
         {/* ── Desktop nav ── */}
         <nav className={`hidden items-center gap-10 font-body text-base transition-colors duration-300 lg:flex ${textColor}`}>
-          <Link to="/about" className="transition-colors hover:text-primary">About</Link>
+          <Link to="/" className="transition-colors hover:text-primary">Home</Link>
           {/* Products dropdown */}
           <div className="relative" ref={productsDropdownRef}>
             <button
@@ -149,7 +149,7 @@ export default function Header() {
                     Our Products
                   </p>
                   <Link
-                    to="/products"
+                    to="/products/ai-chatbot"
                     className="group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-light-bg"
                   >
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -225,14 +225,6 @@ export default function Header() {
                       </Link>
                     ))}
                   </div>
-                  <div className={`mt-4 border-t pt-3 ${dropdownBorderColor}`}>
-                    <Link
-                      to="/services"
-                      className="flex items-center gap-1.5 px-1 font-body text-sm font-medium text-primary hover:underline"
-                    >
-                      View all services →
-                    </Link>
-                  </div>
                 </div>
               </div>
             )}
@@ -286,19 +278,12 @@ export default function Header() {
                       </Link>
                     ))}
                   </div>
-                  <div className={`mt-4 border-t pt-3 ${dropdownBorderColor}`}>
-                    <Link
-                      to="/industries"
-                      className="flex items-center gap-1.5 px-1 font-body text-sm font-medium text-primary hover:underline"
-                    >
-                      View all industries →
-                    </Link>
-                  </div>
                 </div>
               </div>
             )}
           </div>
           {/* <Link to="/insight" className="transition-colors hover:text-primary">Insight</Link> */}
+          <Link to="/about" className="transition-colors hover:text-primary">About Us</Link>
           <Link to="/contact" className="transition-colors hover:text-primary">Contact</Link>
         </nav>
 
@@ -334,7 +319,27 @@ export default function Header() {
       {mobileOpen && (
         <div className={`border-t lg:hidden ${mobileBg}`}>
           <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body max-md:px-5">
-            <Link to="/about" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About</Link>
+            <Link to="/" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Home</Link>
+            {/* Mobile Products group */}
+            <div>
+              <p className={`rounded-lg px-3 py-3 text-base font-medium ${mobileLinkColor}`}>Products</p>
+              <div className="ml-4 mt-1 flex flex-col gap-0.5">
+                <Link
+                  to="/products"
+                  className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  AI Chatbot Platform
+                </Link>
+                <Link
+                  to="/products/ai-calling"
+                  className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  AI Calling Platform
+                </Link>
+              </div>
+            </div>
 
             {/* Mobile Services group */}
             <div>
@@ -381,28 +386,9 @@ export default function Header() {
                 ))}
               </div>
             </div>
-            {/* Mobile Products group */}
-            <div>
-              <p className={`rounded-lg px-3 py-3 text-base font-medium ${mobileLinkColor}`}>Products</p>
-              <div className="ml-4 mt-1 flex flex-col gap-0.5">
-                <Link
-                  to="/products"
-                  className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  AI Chatbot Platform
-                </Link>
-                <Link
-                  to="/products/ai-calling"
-                  className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  AI Calling Platform
-                </Link>
-              </div>
-            </div>
 
             <Link to="/insight" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Insight</Link>
+            <Link to="/about" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About Us</Link>
             <Link to="/contact" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Contact</Link>
 
             <Link

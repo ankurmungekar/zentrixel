@@ -14,28 +14,27 @@ const DEFAULT_FAQS: FAQItem[] = [
   },
   {
     question: 'How long does it take to develop an enterprise application or MVP?',
-    answer:
-      'Timelines vary based on complexity. An MVP typically takes 8–12 weeks, while full enterprise applications may take 4–9 months depending on scope and integrations.',
+    answer: 'MVP development services typically take 8–12 weeks. Enterprise platforms vary based on complexity.',
   },
   {
     question: 'Do you provide artificial intelligence services?',
     answer:
-      'Yes. We offer end-to-end AI services including conversational AI, predictive analytics, workflow automation, and secure AI integration into existing enterprise systems.',
+      'Yes. We provide AI consulting, custom AI software development, automation solutions, and enterprise AI systems.',
   },
   {
     question: 'Do you offer post-launch support?',
     answer:
-      'Absolutely. We provide ongoing support, monitoring, and maintenance to ensure your systems continue to perform reliably as your business evolves.',
+      'Yes. We provide maintenance, monitoring, DevOps support, and performance optimization.',
   },
   {
     question: 'Which industries do you work with?',
     answer:
-      'We serve Banking & Fintech, Healthcare, Insurance, Real Estate & Facilities, and Enterprise B2B organizations across regulated industries.',
+      'We work across BFSI, Healthcare, Insurance, Real Estate, and Enterprise B2B environments.',
   },
   {
     question: 'Do you serve clients in the UAE and Middle East?',
     answer:
-      'Yes. We have a presence in Dubai, UAE and work with enterprise clients across the Middle East, India, and internationally.',
+      'Yes. We support organizations across the UAE, Middle East, India, and global markets.',
   },
 ]
 
@@ -47,7 +46,7 @@ interface FAQProps {
 
 export default function FAQ({ items, showImage = false, heading }: FAQProps = {}) {
   const faqs = items ?? DEFAULT_FAQS
-  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set([0]))
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
     <section className="bg-white py-20 max-md:py-12" id="faq">
@@ -73,17 +72,12 @@ export default function FAQ({ items, showImage = false, heading }: FAQProps = {}
 
           <div className="flex-1">
             {faqs.map((faq, idx) => {
-              const isOpen = openIndices.has(idx)
+              const isOpen = openIndex === idx
               return (
                 <div key={idx}>
                   <button
                     type="button"
-                    onClick={() => setOpenIndices((prev) => {
-                      const next = new Set(prev)
-                      if (next.has(idx)) next.delete(idx)
-                      else next.add(idx)
-                      return next
-                    })}
+                    onClick={() => setOpenIndex(isOpen ? null : idx)}
                     className="flex w-full items-center justify-between py-6 text-left cursor-pointer"
                     aria-expanded={isOpen}
                   >

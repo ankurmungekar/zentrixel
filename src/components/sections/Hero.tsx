@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+
 import heroBg from '../../assets/images/hero-bg-full.jpg'
 
 const TRUST_ITEMS = [
@@ -37,13 +37,15 @@ export default function Hero() {
             systems that perform reliably and scale with your business.
           </p>
 
-          <Link
-            to="/products"
-            className="mt-5 inline-flex h-12 items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90"
+          <button
+            onClick={() => {
+              document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            className="mt-5 inline-flex h-12 cursor-pointer items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90"
             style={{ minWidth: '199px' }}
           >
             View Our Product
-          </Link>
+          </button>
         </div>
 
         <div className="mt-30 w-full">

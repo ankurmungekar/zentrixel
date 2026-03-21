@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit'
 import { buildEmailHtml } from './emailTemplate.js'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import fs from 'fs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST_DIR = path.join(__dirname, '..', 'dist')
@@ -127,8 +128,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 // Health-check
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
 
-// ── Static files (production only) ───────────────────────────
-if (isProd) {
+// ── Static files ───────────────────────────
+if (fs.existsSync(DIST_DIR)) {
   app.use(express.static(DIST_DIR))
   // SPA fallback — let React Router handle all non-API routes
   app.get('*', (_req, res) => {

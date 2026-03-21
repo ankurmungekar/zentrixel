@@ -28,21 +28,6 @@ import AIChatExample from '../assets/images/example-ai-bg.png';
 
 const CAPABILITY_TABS = [
   {
-    id: 'inbound',
-    label: 'Intelligent Inbound Call Automation',
-    subtitle: 'Automated call answering',
-    description:
-      'AI voice agents handle inbound customer calls without traditional IVR menus.',
-    features: [
-      'Natural language conversation handling',
-      'Intelligent call routing',
-      'Escalation to human agents when required',
-      'Customer support queries and FAQs',
-    ],
-    bottomText:
-      'This enables a hybrid AI + human support model, where automation manages routine conversations.',
-  },
-  {
     id: 'outbound',
     label: 'Outbound AI Calling Campaigns',
     subtitle: 'Scalable outbound calling',
@@ -56,6 +41,21 @@ const CAPABILITY_TABS = [
     ],
     bottomText:
       'This allows sales teams to focus on high-value interactions while AI manages initial outreach.',
+  },
+  {
+    id: 'inbound',
+    label: 'Intelligent Inbound Call Automation',
+    subtitle: 'Automated call answering',
+    description:
+      'AI voice agents handle inbound customer calls without traditional IVR menus.',
+    features: [
+      'Natural language conversation handling',
+      'Intelligent call routing',
+      'Escalation to human agents when required',
+      'Customer support queries and FAQs',
+    ],
+    bottomText:
+      'This enables a hybrid AI + human support model, where automation manages routine conversations.',
   },
   {
     id: 'lead',
@@ -375,7 +375,7 @@ export default function AiCallingPage() {
                   ].map((item) => (
                     <div
                       key={item}
-                      className="flex items-center rounded-md bg-light-bg py-4 pr-4 font-body text-sm text-navy min-h-[76px]"
+                      className="flex items-center rounded-md bg-light-bg py-4 pr-4 font-body text-sm text-navy min-h-[76px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-sm"
                       style={{ borderLeft: '4px solid #19AAE9', paddingLeft: '18px' }}
                     >
                       {item}
@@ -409,7 +409,7 @@ export default function AiCallingPage() {
               {HOW_IT_WORKS.map((step) => (
                 <div
                   key={step.step}
-                  className="rounded-2xl p-7"
+                  className="rounded-2xl p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
                   style={{ background: step.gradient }}
                 >
                   <div
@@ -854,7 +854,7 @@ export default function AiCallingPage() {
                       <div
                         key={industry.name}
                         className={[
-                          'flex items-center gap-4 px-6 py-5 max-md:px-4 max-md:py-4',
+                          'group flex items-center gap-4 px-6 py-5 max-md:px-4 max-md:py-4 cursor-pointer',
                           // on desktop: right border between items
                           i < INDUSTRIES_ROW1.length - 1 ? 'md:border-r md:border-r-black/20' : '',
                           // on mobile: bottom border between every item
@@ -862,7 +862,7 @@ export default function AiCallingPage() {
                         ].join(' ')}
                       >
                         <div
-                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg"
+                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
                           style={{ background: industry.color }}
                         >
                           {industry.icon}
@@ -880,7 +880,7 @@ export default function AiCallingPage() {
                       <div
                         key={industry.name}
                         className={[
-                          'flex items-center gap-4 px-6 py-5 max-md:px-4 max-md:py-4',
+                          'group flex items-center gap-4 px-6 py-5 max-md:px-4 max-md:py-4 cursor-pointer',
                           // on desktop: right border between items
                           i < INDUSTRIES_ROW2.length - 1 ? 'md:border-r md:border-r-black/20' : '',
                           // on mobile: bottom border between every item except the last
@@ -888,7 +888,7 @@ export default function AiCallingPage() {
                         ].join(' ')}
                       >
                         <div
-                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg"
+                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
                           style={{ background: industry.color }}
                         >
                           {industry.icon}
@@ -940,7 +940,7 @@ export default function AiCallingPage() {
                   {INTEGRATIONS.map((item) => (
                     <div
                       key={item}
-                      className="flex items-center rounded-md bg-light-bg py-4 pr-4 font-body text-sm leading-snug text-navy min-h-[76px]"
+                      className="flex items-center rounded-md bg-light-bg py-4 pr-4 font-body text-sm leading-snug text-navy min-h-[76px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-sm"
                       style={{ borderLeft: '4px solid #19AAE9', paddingLeft: '18px' }}
                     >
                       {item}
@@ -972,7 +972,7 @@ export default function AiCallingPage() {
             {/* All metric cards — unified 3-column grid */}
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               <div
-                className="rounded-2xl p-8"
+                className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
                 style={{
                   background: 'linear-gradient(180deg, #FFFFFF 0%, #DEECD6 100%)',
                   border: '1px solid #C8CFFF',
@@ -991,7 +991,7 @@ export default function AiCallingPage() {
               </div>
 
               <div
-                className="rounded-2xl p-8"
+                className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
                 style={{
                   background: 'linear-gradient(180deg, #FFFFFF 0%, #C2DDE8 100%)',
                   border: '1px solid #C8CFFF',
@@ -1010,7 +1010,7 @@ export default function AiCallingPage() {
               </div>
 
               <div
-                className="rounded-2xl p-8"
+                className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
                 style={{
                   background: 'linear-gradient(180deg, #FFFFFF 0%, #D7D3F6 100%)',
                   border: '1px solid #C8CFFF',
@@ -1031,7 +1031,7 @@ export default function AiCallingPage() {
               {/* Centered bottom row — spans all 3 cols, items match column width */}
               <div className="col-span-full flex flex-col gap-6 sm:flex-row sm:justify-center">
                 <div
-                  className="w-full rounded-lg p-6 sm:w-[calc((100%-3rem)/3)]"
+                  className="w-full rounded-lg p-6 sm:w-[calc((100%-3rem)/3)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
                   style={{ background: '#FFFFFF', borderLeft: '4px solid #19AAE9' }}
                 >
                   <p className="font-sub-heading text-xl font-semibold text-navy">
@@ -1043,7 +1043,7 @@ export default function AiCallingPage() {
                 </div>
 
                 <div
-                  className="w-full rounded-lg p-6 sm:w-[calc((100%-3rem)/3)]"
+                  className="w-full rounded-lg p-6 sm:w-[calc((100%-3rem)/3)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
                   style={{ background: '#FFFFFF', borderLeft: '4px solid #19AAE9' }}
                 >
                   <p className="font-sub-heading text-xl font-semibold text-navy">

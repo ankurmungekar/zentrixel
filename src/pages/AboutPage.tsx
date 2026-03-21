@@ -181,9 +181,8 @@ export default function AboutPage() {
               {DIFFERENTIATORS.map((item, idx) => (
                 <div
                   key={item.title}
-                  className={`rounded-[12px] border border-[#C8CFFF] p-6 lg:h-[318px] ${
-                    idx % 2 === 1 ? 'lg:mt-[80px]' : ''
-                  }`}
+                  className={`rounded-[12px] border border-[#C8CFFF] p-6 lg:h-[318px] ${idx % 2 === 1 ? 'lg:mt-[80px]' : ''
+                    }`}
                   style={{
                     background:
                       'linear-gradient(180deg, #F5F9FF 0%, #E8F1FF 91%)',
@@ -520,12 +519,6 @@ export default function AboutPage() {
                     className="inline-flex h-12 items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90 max-md:h-11 max-md:px-5 max-md:text-sm"
                   >
                     Schedule a Strategy Call
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="inline-flex h-12 items-center justify-center rounded-[30px] border border-primary px-6 font-body text-base text-primary transition-colors hover:bg-primary/10 max-md:h-11 max-md:px-5 max-md:text-sm"
-                  >
-                    Request a Consultation
                   </Link>
                 </div>
               </div>
