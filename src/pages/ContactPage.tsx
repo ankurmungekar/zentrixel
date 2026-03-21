@@ -87,7 +87,14 @@ export default function ContactPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(fields),
       })
-      const data = await res.json()
+      
+      const text = await res.text()
+      let data
+      try {
+        data = JSON.parse(text)
+      } catch (err) {
+        throw new Error('Received an invalid response from the server (likely an HTML page instead of JSON). Please check your API configuration or VITE_API_URL.')
+      }
 
       if (!res.ok) {
         // Server-side validation errors
