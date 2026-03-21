@@ -4,7 +4,15 @@ import SectionHeading from '../ui/SectionHeading'
 import chattingIcon from '../../assets/images/chatting.svg'
 import growthIcon from '../../assets/images/growth.svg'
 import ideaIcon from '../../assets/images/idea.svg'
-import financeSecurityIcon from '../../assets/images/finance-security.svg'
+import webAndAppIcon from '../../assets/images/web-and-app-icon.svg'
+import backendSystemIcon from '../../assets/images/backend-system-icon.svg'
+import mvpDevelopmentIcon from '../../assets/images/mvp-development.svg'
+import enterpriseArchitectureIcon from '../../assets/images/enterprise-architecture-icon.svg'
+import deliveryOversightIcon from '../../assets/images/delivery-oversight-icon.svg'
+import integrationStrategyIcon from '../../assets/images/integration-strategy-icon.svg'
+import cloudNativeIcon from '../../assets/images/cloud-native-icon.svg'
+import ciCdIcon from '../../assets/images/ci-cd-icon.svg'
+import reliabilityIcon from '../../assets/images/reliability-icon.svg'
 
 interface Feature {
   label: string
@@ -31,9 +39,9 @@ const TABS = [
     description:
       'As a custom software development company, we engineer scalable enterprise applications and platforms.',
     features: [
-      { label: 'Web & mobile application development', icon: chattingIcon },
-      { label: 'Backend systems, APIs & integrations', icon: chattingIcon },
-      { label: 'MVP development services & modernization', icon: chattingIcon },
+      { label: 'Web & mobile application development', icon: webAndAppIcon },
+      { label: 'Backend systems, APIs & integrations', icon: backendSystemIcon },
+      { label: 'MVP development services & modernization', icon: mvpDevelopmentIcon },
     ] as Feature[],
   },
   {
@@ -43,9 +51,9 @@ const TABS = [
     description:
       'Architecture strategy, solution design, and structured implementation governance.',
     features: [
-      { label: 'Enterprise architecture planning', icon: chattingIcon },
-      { label: 'Delivery oversight & risk management', icon: chattingIcon },
-      { label: 'Integration strategy & optimization', icon: chattingIcon },
+      { label: 'Enterprise architecture planning', icon: enterpriseArchitectureIcon },
+      { label: 'Delivery oversight & risk management', icon: deliveryOversightIcon },
+      { label: 'Integration strategy & optimization', icon: integrationStrategyIcon },
     ] as Feature[],
   },
   {
@@ -55,9 +63,9 @@ const TABS = [
     description:
       'Secure, resilient infrastructure built for enterprise scale.',
     features: [
-      { label: 'Cloud-native architecture & migration', icon: chattingIcon },
-      { label: 'CI/CD and infrastructure automation', icon: chattingIcon },
-      { label: 'Reliability engineering & security', icon: chattingIcon },
+      { label: 'Cloud-native architecture & migration', icon: cloudNativeIcon },
+      { label: 'CI/CD and infrastructure automation', icon: ciCdIcon },
+      { label: 'Reliability engineering & security', icon: reliabilityIcon },
     ] as Feature[],
   },
 ]
@@ -97,9 +105,9 @@ export default function Services() {
 
           {/* Tab Content */}
           <div className="mt-10 mx-auto max-w-[1062px]">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-4">
               <div>
-                <h3 className="font-heading text-2xl font-semibold text-navy">
+                <h3 className="font-heading text-2xl font-semibold text-navy mt-0">
                   {tab.title}
                 </h3>
 
@@ -110,7 +118,7 @@ export default function Services() {
               <div>
                 <Link
                   to={tab.link}
-                  className="mt-5 inline-flex h-12 items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90"
+                  className="inline-flex h-12 items-center justify-center rounded-[30px] bg-primary px-6 font-body text-base text-white transition-colors hover:bg-primary/90"
                   style={{ minWidth: '199px' }}
                 >
                   Know More

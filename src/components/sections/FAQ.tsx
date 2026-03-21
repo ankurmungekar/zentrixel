@@ -108,10 +108,10 @@ export default function FAQ({ items, showImage = false, heading }: FAQProps = {}
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? 'max-h-40 pb-4' : 'max-h-0'
+                      isOpen ? 'max-h-[800px] pb-4' : 'max-h-0'
                     }`}
                   >
-                    <p className="font-body text-base leading-relaxed text-muted">
+                    <p className="font-body text-base leading-relaxed text-muted whitespace-pre-wrap">
                       {faq.answer}
                     </p>
                   </div>

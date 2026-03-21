@@ -282,12 +282,12 @@ export default function ContactPage() {
                     </p>
                     <p>
                       <span className="font-medium text-navy">Phone: </span>
-                      +971 504711076, +91 9764013221
+                      +971 504711076, +91 84462 79042
                     </p>
                   </div>
                   {/* WhatsApp CTA */}
                   <a
-                    href="https://wa.me/919764013221"
+                    href="https://wa.me/+918446279042"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-5 inline-flex items-center gap-2 rounded-[30px] border border-[#25D366] px-5 py-2.5 font-body text-sm font-medium text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"

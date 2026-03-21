@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logoWhite from '../../assets/images/logo-white.png'
+import logoWhite from '../../assets/images/logo.png'
 
 const QUICK_LINKS = [
   { label: 'Home', href: '/' },
@@ -8,11 +8,8 @@ const QUICK_LINKS = [
 ]
 
 const PRODUCTS = [
-  { label: 'AI Chatbot Platform', href: '/products' },
+  { label: 'AI Chatbot Platform', href: '/products/ai-chatbot' },
   { label: 'AI Calling Platform', href: '/products/ai-calling' },
-  { label: 'AI Social Engagement Platform', href: '/products' },
-  { label: 'Smart Facility Management Platform', href: '/products' },
-  { label: 'Solid Waste Management Platform', href: '/products' },
 ]
 
 const SERVICES = [
@@ -39,15 +36,15 @@ const INDUSTRIES_LINKS = [
 export default function Footer() {
   return (
     <footer className="bg-navy text-white">
-      <div className="mx-auto max-w-[1440px] px-20 pt-10 pb-8 max-md:px-6">
+      <div className="mx-auto max-w-[1440px] px-14 pt-10 pb-8 max-md:px-5">
         <div className="flex flex-col gap-12 lg:flex-row">
           {/* Left: Logo + Contact + Locations */}
           <div className="relative flex flex-col gap-6 pr-16 lg:w-[416px] lg:flex-shrink-0">
             <Link to="/" aria-label="Zentrixel Home">
-              <img src={logoWhite} alt="Zentrixel" className="h-[61px] w-auto" />
+              <img src={logoWhite} alt="Zentrixel" className="h-[50px] w-auto" />
             </Link>
 
-            <div className="flex flex-col gap-6 pl-6 max-md:pl-0">
+            <div className="flex flex-col gap-6 max-md:pl-0">
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 flex-shrink-0 rounded-full bg-primary" />

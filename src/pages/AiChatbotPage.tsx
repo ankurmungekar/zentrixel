@@ -8,7 +8,6 @@ import blueArrow from '../assets/images/blue-arrow.svg';
 import cancelIcon from '../assets/images/cancel-icon.svg';
 import checkIcon from '../assets/images/check-icon.svg';
 import zentrixelLogo from '../assets/images/logo-black.png';
-import callingCommunication from '../assets/images/calling-communication.svg'
 import unifiedOmni from '../assets/images/unified-omni.jpg';
 import workflowAutomation from '../assets/images/workflow-automation.png';
 import analyticsConversational from '../assets/images/analytics-conversational.png';
@@ -23,11 +22,22 @@ import SaasIcon from '../assets/images/saas-icon.svg';
 import fullyCustomizable from '../assets/images/fully-customizable.png';
 import whyZentrixelAi from '../assets/images/why-zentrixel-ai.png';
 import ctaBgImg from '../assets/images/chatbot-cta-bg.jpg'
+import flexibleSaaS from '../assets/images/flexible-saas.png';
+import aiDrivenIcon from '../assets/images/ai-driven-icon.svg';
+import revenueAccelerationIcon from '../assets/images/revenue-acceleration-icon.svg';
+import supportAutomationIcon from '../assets/images/support-automation-icon.svg';
+import websiteChatIcon from '../assets/images/website-chat-widgets-icon.svg';
+import customerPortalsIcon from '../assets/images/customer-portals-icon.svg';
+import mobileApplicationsIcon from '../assets/images/mobile-applications-icon.svg';
+import whatsappBusinessIcon from '../assets/images/whatsapp-business-icon.svg';
+import instagramDirectIcon from '../assets/images/instagram-direct-icon.svg';
+import facebookMessengerIcon from '../assets/images/facebook-messenger-icon.svg';
 
 const CAPABILITY_TABS = [
   {
     id: 'conversational-intelligence',
     label: 'AI-Driven Conversational Intelligence',
+    icon: aiDrivenIcon,
     subtitle: 'Key capabilities include:',
     description:
       'Zentrixel enables intelligent, context-aware conversations across digital channels using advanced natural language understanding and knowledge retrieval systems.',
@@ -44,32 +54,16 @@ const CAPABILITY_TABS = [
   {
     id: 'revenue-acceleration',
     label: 'Revenue & Pipeline Acceleration',
-    subtitle: 'Key capabilities include:',
+    icon: revenueAccelerationIcon,
     description:
-      'Accelerate your sales pipeline with automated outreach, lead qualification, and intelligent follow-ups.',
-    features: [
-      'Automated outbound dialing at scale',
-      'Real-time prospect scoring and ranking',
-      'Instant lead handoff to sales teams',
-      'Dynamic qualification questionnaires',
-    ],
-    bottomText:
-      'This accelerates the sales pipeline by ensuring only qualified leads reach human agents.',
+      '<p class="mb-4">Customer conversations often represent the earliest stage of the revenue funnel. Zentrixel converts these interactions into structured sales opportunities by capturing key details such as requirements, budget range, and project timelines.</p> <p>By synchronizing this data directly with CRM systems, sales teams receive qualified and actionable leads generated from conversational engagement.</p>',
   },
   {
     id: 'support-automation',
     label: 'Customer Support & Service Automation',
-    subtitle: 'Key capabilities include:',
+    icon: supportAutomationIcon,
     description:
-      'Deliver round-the-clock support with AI agents that can resolve issues and answer queries autonomously.',
-    features: [
-      '24/7 automated issue resolution',
-      'Intelligent ticket routing and escalation',
-      'Multilingual support capabilities',
-      'Seamless integration with helpdesk software',
-    ],
-    bottomText:
-      'This reduces operational costs while significantly improving customer satisfaction scores.',
+      '<p class="mb-4">Zentrixel enables organizations to automate common customer service interactions while maintaining a consistent support experience.</p> <p class="mb-4">ypical automation scenarios include order tracking, billing inquiries, product information retrieval, and FAQ resolution. When required, conversations can be seamlessly escalated to live agents while preserving full context.</p><p>This helps organizations reduce support workload while maintaining responsive service delivery.</p> ',
   },
 ]
 
@@ -117,43 +111,63 @@ const INDUSTRIES_ROW2 = [
 const AI_CHATBOT_FAQS = [
   {
     question: 'What is an enterprise conversational AI platform?',
-    answer:
-      'An enterprise conversational AI platform is a cloud-based SaaS AI chatbot system that automates customer engagement, lead generation, support workflows, and backend orchestration across website chat, WhatsApp Business API, mobile apps, and messaging channels — with governance, audit logging, and enterprise integrations built in.It operates as digital infrastructure, not just a chatbot tool.',
+    answer: 'An enterprise conversational AI platform is a cloud-based SaaS AI chatbot system that automates customer engagement, lead generation, support workflows, and backend orchestration across website chat, WhatsApp Business API, mobile apps, and messaging channels — with governance, audit logging, and enterprise integrations built in.\n\nIt operates as digital infrastructure, not just a chatbot tool.',
   },
   {
-    question: 'What are AI voice agents?',
-    answer:
-      'AI voice agents are software systems that can conduct natural-sounding phone conversations with customers using speech recognition, natural language understanding, and neural voice synthesis technologies. They can handle entire conversations autonomously without human intervention.',
+    question: 'How is conversational AI SaaS different from a basic chatbot?',
+    answer: 'A basic chatbot follows scripted decision trees.\nAn enterprise conversational AI SaaS platform provides:\n• Context-aware multi-turn intelligence\n• Retrieval-Augmented Generation (RAG)\n• Omnichannel AI chatbot deployment\n• CRM/ERP workflow orchestration\n• Audit-grade governance\n\nZentrixel functions as infrastructure-level conversational AI.',
   },
   {
-    question: 'Can AI handle outbound calling campaigns?',
-    answer:
-      'Yes. The Zentrixel AI Calling Platform is designed to manage large-scale outbound calling campaigns, including lead qualification, appointment reminders, follow-up calls, and customer surveys — all fully automated.',
+    question: 'How does Zentrixel differ from traditional chatbot software?',
+    answer: 'Traditional chatbot software relies on rule-based flows or limited LLM responses.\nZentrixel delivers:\n• Multi-tenant SaaS architecture\n• Centralized omnichannel control\n• Enterprise integrations (CRM, ERP)\n• Guardrails and prompt governance\n• Compliance-aligned deployment models\n\nIt is engineered for scale, traceability, and enterprise resilience.',
   },
   {
-    question: 'Is AI calling software suitable for call center automation?',
-    answer:
-      'Absolutely. AI calling platforms are a core solution for call center automation. They enable organisations to handle high call volumes without proportionally increasing headcount, significantly reducing operational costs while maintaining service quality.',
+    question: 'What is the best enterprise AI chatbot platform for regulated industries?',
+    answer: 'The best enterprise AI chatbot platform for regulated industries must include:\n• Tenant-level data isolation\n• Encryption and RBAC\n• Structured audit trails\n• Secure CRM/ERP integrations\n• Compliance-aligned architecture\n\nZentrixel is designed for BFSI, healthcare, insurance, SaaS, and government sectors requiring governed conversational AI infrastructure.',
   },
   {
-    question: 'Can AI phone agents integrate with CRM systems?',
-    answer:
-      'Yes. The platform integrates with leading CRM platforms including Salesforce, HubSpot, and Zoho — automatically syncing call data, conversation insights, and lead status updates in real time.',
+    question: 'Does Zentrixel support WhatsApp Business API and omnichannel deployment?',
+    answer: 'Yes. Zentrixel enables omnichannel AI chatbot deployment across:\n• Website chat\n• WhatsApp Business API\n• Mobile applications\n• Instagram Direct\n• Facebook Messenger\n\nAll channels operate through a centralized SaaS dashboard with unified governance and analytics.',
   },
   {
-    question: 'How scalable are AI voice calling platforms?',
-    answer:
-      'AI voice calling platforms are inherently highly scalable. Unlike human agent teams, AI platforms can handle thousands of simultaneous calls without requiring additional infrastructure, making them ideal for organisations with fluctuating call volumes.',
+    question: 'Can Zentrixel integrate with CRM, ERP, and enterprise systems?',
+    answer: 'Yes. The platform integrates with:\n• CRM systems\n• ERP platforms\n• Payment gateways\n• Ticketing tools\n• Marketing automation platforms\n\nSecure REST APIs and webhooks enable real-time workflow activation and structured audit logging.',
   },
   {
-    question: 'What industries use AI calling solutions?',
-    answer:
-      'AI calling solutions are widely adopted across banking and financial services, healthcare, insurance, real estate, e-commerce, education, and telecommunications — industries that depend on high-volume customer communication.',
+    question: 'Can Zentrixel support high-concurrency enterprise environments?',
+    answer: 'Yes. Built on a cloud-native microservices architecture, the platform supports:\n• Horizontal scalability\n• Stateless AI orchestration\n• High-concurrency message processing\n• SLA-backed reliability\n\nIt is designed for mission-critical enterprise workloads.',
   },
   {
-    question: 'How is AI calling different from traditional IVR systems?',
-    answer:
-      'Traditional IVR systems use fixed menus and keypad inputs. AI calling platforms use conversational AI, meaning customers can speak naturally without navigating menus. The AI understands intent, responds dynamically, and conducts full two-way conversations.',
+    question: 'Is the platform secure and compliance-ready?',
+    answer: 'Yes. Security and governance are embedded by design:\n• HTTPS / TLS encryption\n• Role-Based Access Control (RBAC)\n• Tenant-level data segregation\n• Structured audit trails\n• Configurable data retention policies\n\nSuitable for regulated industries and compliance-driven environments.',
+  },
+  {
+    question: 'Does Zentrixel train AI models on enterprise data?',
+    answer: 'No. Enterprise data remains tenant-isolated and governed under defined security policies. Knowledge ingestion is controlled, and retention policies ensure compliance-aligned AI operations.',
+  },
+  {
+    question: 'What industries benefit from enterprise conversational AI?',
+    answer: 'Enterprise conversational AI is particularly valuable for:\n• Banking customer onboarding automation\n• Insurance claims and policy servicing\n• Healthcare patient engagement\n• SaaS customer lifecycle automation\n• E-commerce order management\n• Government service digitization\n\nZentrixel supports integration-heavy and compliance-driven industries.',
+  },
+  {
+    question: 'Is Zentrixel suitable for enterprises in India, UAE, GCC, and global markets?',
+    answer: 'Yes. Zentrixel supports enterprises across India, UAE, GCC, and global markets requiring scalable, secure, and compliance-aligned conversational AI SaaS infrastructure.',
+  },
+  {
+    question: 'How does Zentrixel improve AI chatbot lead generation?',
+    answer: 'Zentrixel transforms conversational engagement into structured sales pipeline using:\n• Dynamic qualification workflows\n• Budget and requirement capture\n• Intelligent lead scoring\n• Real-time CRM synchronization\n• Automated sales routing\n\nThis accelerates qualification cycles and improves conversion velocity.',
+  },
+  {
+    question: 'Is Zentrixel delivered as a cloud SaaS AI chatbot platform?',
+    answer: 'Yes. Zentrixel is primarily delivered as a cloud-native multi-tenant SaaS AI chatbot platform, with optional white-label and private cloud deployment models.',
+  },
+  {
+    question: 'Is white-label AI chatbot SaaS available?',
+    answer: 'Yes. Zentrixel supports white-label AI chatbot SaaS, allowing partners to:\n• Rebrand the platform\n• Provision multiple tenants\n• Manage administration\n• Monetize conversational AI services',
+  },
+  {
+    question: 'How much does enterprise AI chatbot software cost?',
+    answer: 'Enterprise AI chatbot software pricing depends on:\n• Deployment model (SaaS, white-label, private cloud)\n• Channel coverage (website, WhatsApp, mobile)\n• Message volume and automation depth\n• CRM/ERP integration complexity\n• Governance and compliance requirements\n\nZentrixel offers tiered SaaS plans, usage-based pricing, and enterprise licensing aligned with operational scale.',
   },
 ]
 
@@ -434,8 +448,8 @@ export default function AiCallingPage() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center justify-between px-4 py-5 text-left transition-all ${isActive
-                        ? 'bg-white/10 font-semibold text-white rounded-t-lg'
+                      className={`flex items-center justify-between px-4 py-5 text-left transition-all cursor-pointer ${isActive
+                        ? 'bg-white/10 font-semibold text-white rounded-b-lg'
                         : 'text-white/70 hover:text-white'
                         }`}
                       style={{
@@ -483,7 +497,7 @@ export default function AiCallingPage() {
                   {/* Icon box — 100×100, white bg, rounded */}
                   <div className="flex h-[100px] w-[100px] shrink-0 items-center justify-center rounded-lg bg-white">
                     <img
-                      src={callingCommunication}
+                      src={activeCapability.icon}
                       alt=""
                       className="h-[68px] w-[68px]"
                     />
@@ -497,9 +511,10 @@ export default function AiCallingPage() {
                     >
                       {activeCapability.label}
                     </h3>
-                    <p className="mt-2 font-body text-base leading-relaxed text-muted">
-                      {activeCapability.description}
-                    </p>
+                    <div
+                      className="mt-2 font-body text-base leading-relaxed text-muted prose prose-p:mb-4 pr-[20px]"
+                      dangerouslySetInnerHTML={{ __html: activeCapability?.description || '' }}
+                    />
                   </div>
                 </div>
 
@@ -508,13 +523,13 @@ export default function AiCallingPage() {
                   className="mt-6 font-body text-base font-semibold"
                   style={{ color: '#103592', paddingLeft: '4px' }}
                 >
-                  {activeCapability.subtitle}
+                  {activeCapability?.subtitle}
                 </p>
 
                 {/* Features — 2 column grid with arrow bullets */}
                 <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-3 max-sm:grid-cols-1">
-                  {activeCapability.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-2.5">
+                  {activeCapability?.features?.map((feature) => (
+                    <div key={feature} className="flex gap-2.5">
                       <img src={blueArrow} alt="" className="shrink-0 w-4 h-4 mt-1 self-start" />
                       <span className="font-body text-base leading-relaxed text-muted">
                         {feature}
@@ -560,16 +575,18 @@ export default function AiCallingPage() {
                   </h3>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-6 max-sm:grid-cols-1">
                     {[
-                      'Website chat widgets',
-                      'Mobile applications',
-                      'Instagram Direct',
-                      'Customer portals and web applications',
-                      'WhatsApp Business API',
-                      'Facebook Messenger'
+                      { name: 'Website chat widgets', icon: websiteChatIcon },
+                      { name: 'Customer portals and web applications', icon: customerPortalsIcon },
+                      { name: 'Mobile applications', icon: mobileApplicationsIcon },
+                      { name: 'WhatsApp Business API', icon: whatsappBusinessIcon },
+                      { name: 'Instagram Direct', icon: instagramDirectIcon },
+                      { name: 'Facebook Messenger', icon: facebookMessengerIcon }
                     ].map((channel) => (
-                      <div key={channel} className="flex items-center gap-4">
-                        <div className="h-16 w-16 shrink-0 rounded-md bg-[#F3F4FB] flex items-center justify-center shadow-sm" />
-                        <span className="font-body text-base text-navy">{channel}</span>
+                      <div key={channel.name} className="flex items-center gap-4">
+                        <div className="h-[64px] w-[64px] shrink-0 rounded-md bg-[#F3F4FB] flex items-center justify-center shadow-sm">
+                          <img src={channel.icon} alt={channel.name} />
+                        </div>
+                        <span className="font-body text-base text-navy">{channel.name}</span>
                       </div>
                     ))}
                   </div>
@@ -636,7 +653,7 @@ export default function AiCallingPage() {
                       'Low-confidence detection and fallback mechanisms'
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <div className="mt-1 flex items-center justify-center">
+                        <div className="mt-1 flex items-center justify-center min-w-[16px]">
                           <img src={blueArrow} alt="Check" />
                         </div>
                         <span className="font-body text-base text-navy">{item}</span>
@@ -671,7 +688,7 @@ export default function AiCallingPage() {
                       'Structured audit trails and monitoring'
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
-                        <div className="mt-1 flex items-center justify-center">
+                        <div className="mt-1 flex items-center justify-center min-w-[16px]">
                           <img src={blueArrow} alt="Check" />
                         </div>
                         <span className="font-body text-base text-navy">{item}</span>
@@ -724,6 +741,115 @@ export default function AiCallingPage() {
                   src={analyticsConversational}
                   alt="AI voice automation"
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* ── Measurable Business Impact ─────────────────────────── */}
+        <section className="relative overflow-hidden py-24 px-6 max-md:py-12 max-md:px-4">
+          <div className="relative mx-auto max-w-[1440px] px-14 py-14 max-md:px-5 max-md:py-10">
+            <h2 className="font-heading text-4xl font-semibold leading-snug text-navy max-md:text-3xl">
+              Measurable Business Impact
+            </h2>
+            <p className="mt-4 max-w-[581px] font-body text-base leading-relaxed text-muted">
+              Organizations implementing Zentrixel AI Chatbot Platform typically achieve:
+            </p>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+              {/* Left Column: 6 cards in a 3x2 grid */}
+              <div className="lg:col-span-2 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <div
+                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
+                  style={{
+                    background: 'linear-gradient(180deg, #FFFFFF 0%, #DEECD6 100%)',
+                  }}
+                >
+                  <p className="font-heading text-4xl font-semibold text-navy">30–50%</p>
+                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">reduction</p>
+                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">in manual support workload</p>
+                </div>
+
+                <div
+                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
+                  style={{
+                    background: 'linear-gradient(180deg, #ECF4F8 0%, #C2DDE8 100%)',
+                  }}
+                >
+                  <p className="font-heading text-4xl font-semibold text-navy">2–3x</p>
+                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">faster</p>
+                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">lead qualification cycles</p>
+                </div>
+
+                <div
+                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
+                  style={{
+                    background: 'linear-gradient(180deg, #F0EDFB 0%, #D7D3F6 100%)',
+                  }}
+                >
+                  <p className="font-heading text-4xl font-semibold text-navy">25–40%</p>
+                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">increase</p>
+                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">in qualified pipeline capture</p>
+                </div>
+
+                <div
+                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
+                  style={{
+                    background: 'linear-gradient(180deg, #ECEFF6 0%, #E0E1F6 100%)',
+                  }}
+                >
+                  <p className="font-heading text-4xl font-semibold text-navy">20–35%</p>
+                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">improvement</p>
+                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">in first-response time</p>
+                </div>
+
+                <div
+                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
+                  style={{
+                    background: 'linear-gradient(180deg, #FFFED8 0%, #F9E5C5 100%)',
+                  }}
+                >
+                  <p className="font-heading text-4xl font-semibold text-navy">40–60%</p>
+                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">automation</p>
+                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">coverage of repetitive queries</p>
+                </div>
+
+                <div
+                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
+                  style={{
+                    background: 'linear-gradient(180deg, #D8F0F1 0%, #C5EFE3 100%)',
+                  }}
+                >
+                  <p className="font-heading text-4xl font-semibold text-navy">24/7</p>
+                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">engagement</p>
+                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">without incremental staffing</p>
+                </div>
+              </div>
+
+              {/* Right Column: Security Capabilities */}
+              <div className="rounded-2xl p-8 lg:col-span-1 shadow-sm flex flex-col justify-center" style={{ background: '#F3F4FB' }}>
+                <h3 className="font-body text-lg font-semibold text-navy mb-6">
+                  Key security capabilities include:
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    'End-to-end encryption using HTTPS / TLS protocols',
+                    'Role-Based Access Control (RBAC)',
+                    'Tenant-level data isolation',
+                    'Structured audit trails and monitoring'
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0">
+                        <img src={blueArrow} alt="" className="w-4 h-4 object-contain" />
+                      </div>
+                      <span className="font-body text-base text-navy">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 border-t border-[#E2E8F0] pt-6">
+                  <p className="font-body text-base font-medium text-navy leading-relaxed">
+                    Conversational AI becomes a foundational digital asset not an experiment.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -808,161 +934,46 @@ export default function AiCallingPage() {
           </div>
         </section>
 
-        {/* ── Measurable Business Impact ─────────────────────────── */}
-        <section className="relative overflow-hidden py-24 px-6 max-md:py-12 max-md:px-4">
-          <div className="relative mx-auto max-w-[1440px] px-14 py-14 max-md:px-5 max-md:py-10 rounded-2xl" style={{
-            background: '#F3F4FB',
-          }}>
-            <h2 className="font-heading text-4xl font-semibold leading-snug text-navy max-md:text-3xl">
-              Measurable Business Impact
-            </h2>
-            <p className="mt-4 max-w-[581px] font-body text-base leading-relaxed text-muted">
-              Organizations implementing Zentrixel AI Chatbot Platform typically achieve:
-            </p>
-
-            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-              {/* Left Column: 6 cards in a 3x2 grid */}
-              <div className="lg:col-span-2 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div
-                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
-                  style={{
-                    background: 'linear-gradient(180deg, #FFFFFF 0%, #DEECD6 100%)',
-                  }}
-                >
-                  <p className="font-heading text-4xl font-semibold text-navy">30–50%</p>
-                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">reduction</p>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">in manual support workload</p>
-                </div>
-
-                <div
-                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
-                  style={{
-                    background: 'linear-gradient(180deg, #ECF4F8 0%, #C2DDE8 100%)',
-                  }}
-                >
-                  <p className="font-heading text-4xl font-semibold text-navy">2–3x</p>
-                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">faster</p>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">lead qualification cycles</p>
-                </div>
-
-                <div
-                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
-                  style={{
-                    background: 'linear-gradient(180deg, #F0EDFB 0%, #D7D3F6 100%)',
-                  }}
-                >
-                  <p className="font-heading text-4xl font-semibold text-navy">25–40%</p>
-                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">increase</p>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">in qualified pipeline capture</p>
-                </div>
-
-                <div
-                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
-                  style={{
-                    background: 'linear-gradient(180deg, #ECEFF6 0%, #E0E1F6 100%)',
-                  }}
-                >
-                  <p className="font-heading text-4xl font-semibold text-navy">20–35%</p>
-                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">improvement</p>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">in first-response time</p>
-                </div>
-
-                <div
-                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
-                  style={{
-                    background: 'linear-gradient(180deg, #FFFED8 0%, #F9E5C5 100%)',
-                  }}
-                >
-                  <p className="font-heading text-4xl font-semibold text-navy">40–60%</p>
-                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">automation</p>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">coverage of repetitive queries</p>
-                </div>
-
-                <div
-                  className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg flex flex-col justify-center"
-                  style={{
-                    background: 'linear-gradient(180deg, #D8F0F1 0%, #C5EFE3 100%)',
-                  }}
-                >
-                  <p className="font-heading text-4xl font-semibold text-navy">24/7</p>
-                  <p className="mt-2 font-sub-heading text-lg font-semibold text-navy">engagement</p>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-muted">without incremental staffing</p>
-                </div>
-              </div>
-
-              {/* Right Column: Security Capabilities */}
-              <div className="rounded-2xl bg-white p-8 lg:col-span-1 shadow-sm flex flex-col justify-center">
-                <h3 className="font-body text-lg font-semibold text-navy mb-6">
-                  Key security capabilities include:
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    'End-to-end encryption using HTTPS / TLS protocols',
-                    'Role-Based Access Control (RBAC)',
-                    'Tenant-level data isolation',
-                    'Structured audit trails and monitoring'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                         <img src={blueArrow} alt="" className="w-4 h-4 object-contain" />
-                      </div>
-                      <span className="font-body text-base text-navy">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 border-t border-[#E2E8F0] pt-6">
-                  <p className="font-body text-base font-medium text-navy leading-relaxed">
-                    Conversational AI becomes a foundational digital asset not an experiment.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ──  Flexible SaaS Subscription Models ────── */}
         <section className="py-24 max-md:py-16">
           <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
-            <div className="grid items-start gap-16 lg:grid-cols-2 lg:grid-cols-[4fr_6fr]">
+            <div className="grid items-start gap-16 lg:grid-cols-2">
               {/* Left: images */}
               <div className="relative max-lg:hidden">
                 <img
-                  src={whyZentrixelAi}
+                  src={flexibleSaaS}
                   alt="Flexible SaaS Subscription Models"
                   loading="lazy"
                 />
               </div>
-              {/* Right: text */}
-              <div className="md:pt-14">
+              {/* Right: text wrapped in a card */}
+              <div
+                className="relative w-full rounded-md border border-[#F5F6FF] bg-white px-8 py-10 shadow-[0_4px_8px_rgba(0,0,0,0.1)] max-md:px-6 max-md:py-8 lg:-left-[130px] lg:top-[33px] lg:w-[calc(100%+130px)]"
+              >
                 <h2 className="mb-4 font-heading text-4xl font-semibold leading-snug text-navy max-md:text-3xl">
                   Flexible SaaS Subscription Models
                 </h2>
-                <p className="font-body text-base leading-relaxed text-navy font-semibold mb-8">
+                <p className="font-body text-base leading-relaxed text-muted">
                   Commercial flexibility aligned with operational scale:
                 </p>
-                
-                <div className="flex flex-wrap gap-4">
+                <div className="mt-4 grid grid-cols-2 gap-3 max-sm:grid-cols-1">
                   {[
                     'Tiered SaaS plans',
                     'Enterprise licensing',
                     'Usage-based pricing',
                     'Custom volume agreements',
                     'Channel-based subscriptions'
-                  ].map((item, index) => (
-                    <div 
-                      key={index}
-                      className="rounded-md px-6 py-4 flex items-center justify-center transition-all hover:-translate-y-1 hover:shadow-md cursor-pointer"
-                      style={{
-                        background: '#F3F4FB',
-                        border: '1px solid #19AAE9'
-                      }}
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center rounded-md bg-light-bg py-4 pr-4 font-body text-sm text-navy min-h-[66px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-sm"
+                      style={{ borderLeft: '4px solid #19AAE9', paddingLeft: '18px' }}
                     >
-                      <span className="font-body text-base text-navy whitespace-nowrap">{item}</span>
+                      {item}
                     </div>
                   ))}
                 </div>
-
-                <p className="mt-8 font-body text-base leading-relaxed text-muted">
+                <p className="mt-6 font-body text-base leading-relaxed text-muted">
                   Designed to support startups, growth-stage companies, and global enterprises.
                 </p>
               </div>
@@ -971,15 +982,129 @@ export default function AiCallingPage() {
         </section>
 
         {/* ──  Structured Enterprise Onboarding ────── */}
-        <section className="py-24 max-md:py-16 bg-navy relative overflow-hidden">
-          <div className="mx-auto max-w-[1440px] px-14 max-md:px-5 relative z-10 text-center">
-            <h2 className="font-heading text-4xl font-semibold leading-snug text-white max-md:text-3xl">
+        <section className="py-24 max-md:py-16">
+          <div className="mx-auto max-w-[1440px] px-14 max-md:px-5">
+            <h2 className="text-center font-heading text-4xl font-semibold leading-snug text-navy max-md:text-3xl">
               Structured Enterprise Onboarding
             </h2>
-            <p className="mt-4 mx-auto max-w-[660px] font-body text-base leading-relaxed text-white/80">
+            <p className="mt-4 text-center font-body text-base leading-relaxed text-muted">
               A predictable, governed implementation model.
             </p>
-            <p className="mt-6 mx-auto max-w-[830px] font-body text-xl font-medium leading-relaxed text-white">
+
+            <div className="relative mt-16 max-w-5xl mx-auto">
+              {/* Central Timeline Line */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-black/20 -translate-x-1/2 max-md:left-8 max-md:translate-x-0"></div>
+
+              {/* Phase 1 */}
+              <div className="relative flex w-full mb-12 max-md:flex-col max-md:pl-16">
+                {/* Left side (Desktop Badge) */}
+                <div className="w-1/2 pr-12 flex justify-end items-start max-md:hidden">
+                  <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-5 py-1.5 text-white font-body text-sm font-medium">
+                    Phase 1
+                  </div>
+                </div>
+
+                {/* Center Node */}
+                <div className="absolute left-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-[#1E5EFF]/20 -translate-x-1/2 top-[6px] max-md:left-8 max-md:-translate-x-[7px]"></div>
+
+                {/* Right side content */}
+                <div className="w-1/2 pl-12 max-md:w-full max-md:pl-0 flex flex-col items-start gap-4">
+                  <div className="flex items-center gap-4">
+                    {/* Mobile Badge */}
+                    <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-4 py-1 text-white font-body text-xs font-medium md:hidden min-w-[80px]">
+                      Phase 1
+                    </div>
+                    <h3 className="font-heading text-xl font-semibold text-navy m-0">Discovery & Conversational Design</h3>
+                  </div>
+                  <div className="w-full rounded-xl p-6 bg-gradient-to-b from-[#F5F9FF] to-[#E8F1FF] border border-[#C8CFFF]">
+                    <p className="font-body text-base text-navy leading-relaxed">Use case definition, workflow mapping, governance alignment.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phase 2 */}
+              <div className="relative flex w-full mb-12 max-md:flex-col max-md:pl-16">
+                {/* Left side content */}
+                <div className="w-1/2 pr-12 max-md:w-full max-md:pr-0 flex flex-col items-end max-md:items-start gap-4">
+                  <div className="flex items-center gap-4 flex-row-reverse max-md:flex-row">
+                    {/* Mobile Badge */}
+                    <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-4 py-1 text-white font-body text-xs font-medium md:hidden min-w-[80px]">
+                      Phase 2
+                    </div>
+                    <h3 className="font-heading text-xl font-semibold text-navy m-0 text-right max-md:text-left">Configuration & Integration</h3>
+                  </div>
+                  <div className="w-full rounded-xl p-6 bg-gradient-to-b from-[#F5F9FF] to-[#E8F1FF] border border-[#C8CFFF]">
+                    <p className="font-body text-base text-navy leading-relaxed text-right max-md:text-left">Channel enablement, API connectivity, CRM/ERP synchronization, AI validation.</p>
+                  </div>
+                </div>
+
+                {/* Center Node */}
+                <div className="absolute left-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-[#1E5EFF]/20 -translate-x-1/2 top-[6px] max-md:left-8 max-md:-translate-x-[7px]"></div>
+
+                {/* Right side (Desktop Badge) */}
+                <div className="w-1/2 pl-12 flex justify-start items-start max-md:hidden">
+                  <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-5 py-1.5 text-white font-body text-sm font-medium">
+                    Phase 2
+                  </div>
+                </div>
+              </div>
+
+              {/* Phase 3 */}
+              <div className="relative flex w-full mb-12 max-md:flex-col max-md:pl-16">
+                {/* Left side (Desktop Badge) */}
+                <div className="w-1/2 pr-12 flex justify-end items-start max-md:hidden">
+                  <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-5 py-1.5 text-white font-body text-sm font-medium">
+                    Phase 3
+                  </div>
+                </div>
+
+                {/* Center Node */}
+                <div className="absolute left-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-[#1E5EFF]/20 -translate-x-1/2 top-[6px] max-md:left-8 max-md:-translate-x-[7px]"></div>
+
+                {/* Right side content */}
+                <div className="w-1/2 pl-12 max-md:w-full max-md:pl-0 flex flex-col items-start gap-4">
+                  <div className="flex items-center gap-4">
+                    {/* Mobile Badge */}
+                    <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-4 py-1 text-white font-body text-xs font-medium md:hidden min-w-[80px]">
+                      Phase 3
+                    </div>
+                    <h3 className="font-heading text-xl font-semibold text-navy m-0">Testing & Optimization</h3>
+                  </div>
+                  <div className="w-full rounded-xl p-6 bg-gradient-to-b from-[#F5F9FF] to-[#E8F1FF] border border-[#C8CFFF]">
+                    <p className="font-body text-base text-navy leading-relaxed">Conversation tuning, load validation, security testing, performance benchmarking.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phase 4 */}
+              <div className="relative flex w-full max-md:flex-col max-md:pl-16">
+                {/* Left side content */}
+                <div className="w-1/2 pr-12 max-md:w-full max-md:pr-0 flex flex-col items-end max-md:items-start gap-4">
+                  <div className="flex items-center gap-4 flex-row-reverse max-md:flex-row">
+                    {/* Mobile Badge */}
+                    <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-4 py-1 text-white font-body text-xs font-medium md:hidden min-w-[80px]">
+                      Phase 4
+                    </div>
+                    <h3 className="font-heading text-xl font-semibold text-navy m-0 text-right max-md:text-left">Controlled Go-Live</h3>
+                  </div>
+                  <div className="w-full rounded-xl p-6 bg-gradient-to-b from-[#F5F9FF] to-[#E8F1FF] border border-[#C8CFFF]">
+                    <p className="font-body text-base text-navy leading-relaxed text-right max-md:text-left">Phased rollout, monitoring dashboards, continuous optimization.</p>
+                  </div>
+                </div>
+
+                {/* Center Node */}
+                <div className="absolute left-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-[#1E5EFF]/20 -translate-x-1/2 top-[6px] max-md:left-8 max-md:-translate-x-[7px]"></div>
+
+                {/* Right side (Desktop Badge) */}
+                <div className="w-1/2 pl-12 flex justify-start items-start max-md:hidden">
+                  <div className="bg-gradient-to-r from-[#19AAE9] to-[#1E5EFF] rounded-[40px] px-5 py-1.5 text-white font-body text-sm font-medium">
+                    Phase 4
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-20 text-center font-body text-xl font-medium leading-relaxed text-muted">
               Deployment timelines vary based on integration complexity and compliance scope.
             </p>
           </div>
@@ -1149,7 +1274,7 @@ export default function AiCallingPage() {
             <FAQ items={AI_CHATBOT_FAQS} />
           </div>
         </section>
-      </main>
+      </main >
     </>
   )
 }

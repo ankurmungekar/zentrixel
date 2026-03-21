@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/swiper.css'
 
@@ -70,11 +70,15 @@ export default function Testimonials() {
           </button>
 
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             onSwiper={(swiper) => { swiperRef.current = swiper }}
             slidesPerView={1}
             spaceBetween={30}
             loop
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
             breakpoints={{
               1024: { slidesPerView: 2 },
             }}

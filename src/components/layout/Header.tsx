@@ -50,6 +50,18 @@ export default function Header() {
     setProductsOpen(false)
   }, [pathname])
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -317,7 +329,7 @@ export default function Header() {
 
       {/* ── Mobile menu ── */}
       {mobileOpen && (
-        <div className={`border-t lg:hidden ${mobileBg}`}>
+        <div className={`border-t lg:hidden max-h-[calc(100vh-80px)] overflow-y-auto ${mobileBg}`}>
           <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body max-md:px-5">
             <Link to="/" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Home</Link>
             {/* Mobile Products group */}
@@ -325,7 +337,7 @@ export default function Header() {
               <p className={`rounded-lg px-3 py-3 text-base font-medium ${mobileLinkColor}`}>Products</p>
               <div className="ml-4 mt-1 flex flex-col gap-0.5">
                 <Link
-                  to="/products"
+                  to="/products/ai-chatbot"
                   className={`rounded-lg px-3 py-2 text-sm transition-colors ${mobileLinkColor}`}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -387,7 +399,7 @@ export default function Header() {
               </div>
             </div>
 
-            <Link to="/insight" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Insight</Link>
+            {/* <Link to="/insight" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Insight</Link> */}
             <Link to="/about" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About Us</Link>
             <Link to="/contact" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Contact</Link>
 

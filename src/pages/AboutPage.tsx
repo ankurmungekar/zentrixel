@@ -8,34 +8,37 @@ import founderChiranjibiImg from '../assets/images/about-founder-chiranjibi.jpg'
 import founderBhushanImg from '../assets/images/about-founder-bhushan.jpg'
 import longTermImg from '../assets/images/about-long-term.png'
 import ctaBgImg from '../assets/images/about-cta-bg.jpg'
-import iconAi from '../assets/images/about-icon-ai.svg'
 import quoteOpen from '../assets/images/about-quote-open.svg'
 import quoteClose from '../assets/images/about-quote-close.svg'
 import zenImg from '../assets/images/about-zen.png'
 import triImg from '../assets/images/about-tri.png'
 import xelImg from '../assets/images/about-xel.png'
+import architectureFirstIcon from '../assets/images/architecture-first-icon.svg'
+import productionGrade from '../assets/images/production-grade-icon.svg'
+import responsibleEnterpriseAi from '../assets/images/responsible-enterprise-ai-icon.svg'
+import predictableLowRiskExecution from '../assets/images/predictable-low-risk-execution-icon.svg'
 
 const DIFFERENTIATORS = [
   {
-    icon: iconAi,
+    icon: productionGrade,
     title: 'Production-Grade\nEngineering',
     description:
       'Systems designed for live users, real data volumes, and operational accountability.',
   },
   {
-    icon: iconAi,
+    icon: architectureFirstIcon,
     title: 'Architecture-First Delivery',
     description:
       'Scalability, security, and maintainability defined before implementation.',
   },
   {
-    icon: iconAi,
+    icon: responsibleEnterpriseAi,
     title: 'Responsible Enterprise AI',
     description:
       'Artificial intelligence services integrated into governed, measurable workflows.',
   },
   {
-    icon: iconAi,
+    icon: predictableLowRiskExecution,
     title: 'Predictable, Low-Risk Execution',
     description:
       'Structured engagement models supporting transparency and long-term ownership.',

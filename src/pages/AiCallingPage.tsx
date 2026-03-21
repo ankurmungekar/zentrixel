@@ -25,30 +25,37 @@ import InterpriseIntegrationImage from '../assets/images/enterprise-integration.
 import SecurityImage from '../assets/images/security-and-enterprise.png';
 import ctaBg from '../assets/images/automate-business-calls-bg.jpg';
 import AIChatExample from '../assets/images/example-ai-bg.png';
+import outboundIcon from '../assets/images/outbound-icon.svg';
+import aiLeadIcon from '../assets/images/ai-lead.svg';
+import appointmentIcon from '../assets/images/appointment-icon.svg';
 
 const CAPABILITY_TABS = [
   {
     id: 'outbound',
     label: 'Outbound AI Calling Campaigns',
-    subtitle: 'Scalable outbound calling',
+    icon: outboundIcon,
+    subtitle: 'Common use cases include:',
     description:
-      'Automate outbound campaigns at scale with personalised AI-driven conversations.',
+      'Run high-volume automated calling campaigns for sales, marketing, and customer engagement.',
     features: [
-      'Automated outbound dialing at scale',
-      'Personalised AI-driven sales conversations',
-      'Real-time campaign performance tracking',
-      'CRM-integrated contact list management',
+      'Lead generation campaigns',
+      'Customer follow-up calls',
+      'Payment reminders',
+      'Marketing outreach',
+      'Feedback and survey calls'
     ],
     bottomText:
-      'This allows sales teams to focus on high-value interactions while AI manages initial outreach.',
+      'The platform can execute thousands of simultaneous calls, significantly increasing campaign reach and efficiency.',
   },
   {
     id: 'inbound',
     label: 'Intelligent Inbound Call Automation',
-    subtitle: 'Automated call answering',
+    icon: callingCommunication,
+    subtitle: 'Capabilities include:',
     description:
       'AI voice agents handle inbound customer calls without traditional IVR menus.',
     features: [
+      'Automated call answering',
       'Natural language conversation handling',
       'Intelligent call routing',
       'Escalation to human agents when required',
@@ -60,32 +67,35 @@ const CAPABILITY_TABS = [
   {
     id: 'lead',
     label: 'AI Lead Qualification',
-    subtitle: 'Automated lead scoring',
+    icon: aiLeadIcon,
+    subtitle: 'The platform can:',
     description:
-      'Qualify leads automatically through intelligent AI-driven conversations.',
+      'AI voice agents automatically qualify prospects before routing them to sales teams.',
     features: [
-      'Automated prospect scoring and ranking',
-      'Dynamic qualification questionnaires',
-      'Instant lead handoff to sales teams',
-      'Conversation transcripts and analytics',
+      'Ask structured qualification questions',
+      'Capture prospect details',
+      'Identify customer intent',
+      'Score leads based on responses',
+      'Route qualified prospects to sales representatives'
     ],
     bottomText:
-      'This accelerates the sales pipeline by ensuring only qualified leads reach human agents.',
+      'This allows sales teams to focus on high-value opportunities.',
   },
   {
     id: 'appointment',
     label: 'Appointment Scheduling & Reminders',
-    subtitle: 'Automated scheduling',
+    icon: appointmentIcon,
+    subtitle: 'Capabilities include:',
     description:
-      'AI-powered appointment management with calendar integration and automated reminders.',
+      'AI voice assistants automate appointment management across industries.',
     features: [
-      'Calendar-integrated booking automation',
-      'AI-powered slot availability management',
-      'Automated reminder and confirmation calls',
-      'Rescheduling and cancellation handling',
+      'Automated appointment booking',
+      'Calendar availability checks',
+      'Confirmation and rescheduling',
+      'Automated reminder calls',
     ],
     bottomText:
-      'This reduces no-shows and manual coordination effort across the organization.',
+      'This reduces manual scheduling effort and improves attendance rates.',
   },
 ]
 
@@ -215,42 +225,42 @@ const AI_CALLING_FAQS = [
   {
     question: 'What are AI voice agents?',
     answer:
-      'AI voice agents are software systems that can conduct natural-sounding phone conversations with customers using speech recognition, natural language understanding, and neural voice synthesis technologies. They can handle entire conversations autonomously without human intervention.',
+      'AI voice agents are automated systems that use speech recognition, natural language processing, and voice synthesis to conduct real-time phone conversations with customers.',
   },
   {
     question: 'Can AI handle outbound calling campaigns?',
     answer:
-      'Yes. The Zentrixel AI Calling Platform is designed to manage large-scale outbound calling campaigns, including lead qualification, appointment reminders, follow-up calls, and customer surveys — all fully automated.',
+      'Yes. AI outbound calling systems can run large-scale calling campaigns for lead generation, appointment reminders, surveys, and customer engagement.',
   },
   {
     question: 'Is AI calling software suitable for call center automation?',
     answer:
-      'Absolutely. AI calling platforms are a core solution for call center automation. They enable organisations to handle high call volumes without proportionally increasing headcount, significantly reducing operational costs while maintaining service quality.',
+      'Yes. AI voice automation platforms can significantly reduce manual call center workload by handling routine conversations and routing complex cases to human agents.',
   },
   {
     question: 'Can AI phone agents integrate with CRM systems?',
     answer:
-      'Yes. The platform integrates with leading CRM platforms including Salesforce, HubSpot, and Zoho — automatically syncing call data, conversation insights, and lead status updates in real time.',
+      'Yes. Most enterprise AI calling platforms integrate with CRM systems such as Salesforce, HubSpot, and Zoho to automatically capture conversation data and update customer records.',
   },
   {
     question: 'How scalable are AI voice calling platforms?',
     answer:
-      'AI voice calling platforms are inherently highly scalable. Unlike human agent teams, AI platforms can handle thousands of simultaneous calls without requiring additional infrastructure, making them ideal for organisations with fluctuating call volumes.',
+      'Cloud-based AI calling platforms can handle thousands of simultaneous calls, making them highly scalable for large enterprises and high-volume outreach campaigns.',
   },
   {
     question: 'What industries use AI calling solutions?',
     answer:
-      'AI calling solutions are widely adopted across banking and financial services, healthcare, insurance, real estate, e-commerce, education, and telecommunications — industries that depend on high-volume customer communication.',
+      'AI voice automation is widely used in industries such as financial services, healthcare, insurance, real estate, e-commerce, telecom, and customer support operations.',
   },
   {
     question: 'How is AI calling different from traditional IVR systems?',
     answer:
-      'Traditional IVR systems use fixed menus and keypad inputs. AI calling platforms use conversational AI, meaning customers can speak naturally without navigating menus. The AI understands intent, responds dynamically, and conducts full two-way conversations.',
+      'Traditional IVR systems rely on menu-based interactions, while conversational AI calling platforms allow customers to speak naturally and receive intelligent responses.',
   },
 ]
 
 export default function AiCallingPage() {
-  const [activeTab, setActiveTab] = useState('inbound')
+  const [activeTab, setActiveTab] = useState('outbound')
   const activeCapability = CAPABILITY_TABS.find((t) => t.id === activeTab)!
 
   return (
@@ -346,6 +356,7 @@ export default function AiCallingPage() {
                 <img
                   src={productCalling}
                   alt="AI voice automation"
+                  className='w-full'
                 />
               </div>
 
@@ -384,8 +395,8 @@ export default function AiCallingPage() {
                 </div>
 
                 <p className="mt-6 font-body text-base leading-relaxed text-muted">
-                  AI voice agents are becoming a core component of modern customer communication
-                  infrastructure.
+                  AI voice agents are becoming a <strong>core component of modern customer communication
+                    infrastructure.</strong>
                 </p>
               </div>
             </div>
@@ -450,7 +461,7 @@ export default function AiCallingPage() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center justify-between px-3 py-5 text-left transition-all max-lg:rounded-lg max-lg:px-4 max-lg:py-3 ${isActive
+                      className={`flex items-center justify-between px-3 py-5 text-left transition-all max-lg:rounded-lg max-lg:px-4 max-lg:py-3 cursor-pointer ${isActive
                         ? 'bg-light-bg font-semibold text-navy rounded-lg'
                         : 'text-navy/70 hover:text-navy'
                         }`}
@@ -493,7 +504,7 @@ export default function AiCallingPage() {
                   {/* Icon box — 100×100, white bg, rounded */}
                   <div className="flex h-[100px] w-[100px] shrink-0 items-center justify-center rounded-lg bg-white">
                     <img
-                      src={callingCommunication}
+                      src={activeCapability.icon}
                       alt=""
                       className="h-[68px] w-[68px]"
                     />
