@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom'
 import logoWhite from '../../assets/images/logo.png'
 
 const QUICK_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' },
+  { label: 'About', href: '/about-us' },
   { label: 'Contact Us', href: '/contact' },
 ]
 
@@ -230,7 +229,7 @@ export default function Footer() {
             <p className="font-body text-sm leading-[1.71em] text-white/60">
               © Zentrixel. All rights reserved.
             </p>
-            {/* <p className="font-body text-sm leading-[1.71em] text-white/60">
+            <p className="font-body text-sm leading-[1.71em] text-white/60">
               <Link to="/privacy" className="transition-colors hover:text-white">
                 Privacy Policy
               </Link>
@@ -238,7 +237,7 @@ export default function Footer() {
               <Link to="/terms" className="transition-colors hover:text-white">
                 Terms of Use
               </Link>
-            </p> */}
+            </p>
           </div>
         </div>
       </div>

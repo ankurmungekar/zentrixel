@@ -14,8 +14,8 @@ import INDUSTRIES from '../../data/industries'
  */
 function getHeaderStyle(pathname: string): 'dark' | 'transparent-dark' | 'transparent-light' {
   if (pathname.startsWith('/services')) return 'dark'
-  if (pathname.startsWith('/industries')) return 'dark'
-  const DARK: string[] = ['/about', '/contact', '/insight']
+  // Which routes should use the dark header variants?
+  const DARK: string[] = ['/about-us', '/contact', '/insight']
   if (DARK.includes(pathname)) return 'dark'
   if (pathname === '/products/ai-calling' || pathname === '/products/ai-chatbot') return 'transparent-dark'
   return 'transparent-light'
@@ -295,7 +295,7 @@ export default function Header() {
             )}
           </div>
           {/* <Link to="/insight" className="transition-colors hover:text-primary">Insight</Link> */}
-          <Link to="/about" className="transition-colors hover:text-primary">About Us</Link>
+          <Link to="/about-us" className="transition-colors hover:text-primary">About</Link>
           <Link to="/contact" className="transition-colors hover:text-primary">Contact</Link>
         </nav>
 
@@ -330,8 +330,9 @@ export default function Header() {
       {/* ── Mobile menu ── */}
       {mobileOpen && (
         <div className={`border-t lg:hidden max-h-[calc(100vh-80px)] overflow-y-auto ${mobileBg}`}>
-          <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-14 py-6 font-body max-md:px-5">
-            <Link to="/" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Home</Link>
+          <nav className="mt-8 flex flex-col gap-4">
+            <Link to="/about-us" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About</Link>
+
             {/* Mobile Products group */}
             <div>
               <p className={`rounded-lg px-3 py-3 text-base font-medium ${mobileLinkColor}`}>Products</p>

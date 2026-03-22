@@ -33,7 +33,7 @@ export default function App() {
       <Suspense fallback={<div className="min-h-screen" />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/about-us" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/industries" element={<IndustriesPage />} />
