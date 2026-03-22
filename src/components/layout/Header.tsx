@@ -329,8 +329,8 @@ export default function Header() {
 
       {/* ── Mobile menu ── */}
       {mobileOpen && (
-        <div className={`border-t lg:hidden max-h-[calc(100vh-80px)] overflow-y-auto ${mobileBg}`}>
-          <nav className="mt-8 flex flex-col gap-4">
+        <div className={`border-t lg:hidden max-h-[calc(100dvh-80px)] overflow-y-auto ${mobileBg}`}>
+          <nav className="mt-8 flex flex-col gap-4 px-5 pb-32">
             <Link to="/about-us" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About</Link>
 
             {/* Mobile Products group */}
