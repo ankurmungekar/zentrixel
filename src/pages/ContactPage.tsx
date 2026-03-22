@@ -24,8 +24,11 @@ function validate(fields: FormFields): FormErrors {
   if (!EMAIL_RE.test(fields.email.trim())) {
     errors.email = 'Please enter a valid email address.'
   }
-  if (fields.phone && !PHONE_RE.test(fields.phone.trim())) {
+  if (!fields.phone || !PHONE_RE.test(fields.phone.trim())) {
     errors.phone = 'Please enter a valid phone number.'
+  }
+  if (!fields.company.trim()) {
+    errors.company = 'Company name is required.'
   }
   if (!fields.message.trim() || fields.message.trim().length < 10) {
     errors.message = 'Message must be at least 10 characters.'
@@ -213,7 +216,7 @@ export default function ContactPage() {
 
                   {/* Company + Phone row */}
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Company Name" error={errors.company}>
+                    <Field label="Company Name *" error={errors.company}>
                       <input
                         id="company" name="company" type="text"
                         placeholder="Your company"
@@ -223,7 +226,7 @@ export default function ContactPage() {
                         autoComplete="organization"
                       />
                     </Field>
-                    <Field label="Phone Number" error={errors.phone}>
+                    <Field label="Phone Number *" error={errors.phone}>
                       <input
                         id="phone" name="phone" type="tel"
                         placeholder="+91 0000000000"

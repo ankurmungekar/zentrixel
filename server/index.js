@@ -65,7 +65,7 @@ const PHONE_REGEX = /^[+\d\s\-().]{7,20}$/
 
 function validateBody(body) {
   const errors = {}
-  const { name, email, phone, message } = body
+  const { name, email, phone, company, message } = body
 
   if (!name || name.trim().length < 2) {
     errors.name = 'Full name is required (at least 2 characters).'
@@ -73,8 +73,11 @@ function validateBody(body) {
   if (!email || !EMAIL_REGEX.test(email.trim())) {
     errors.email = 'A valid email address is required.'
   }
-  if (phone && !PHONE_REGEX.test(phone.trim())) {
+  if (!phone || !PHONE_REGEX.test(phone.trim())) {
     errors.phone = 'Please enter a valid phone number.'
+  }
+  if (!company || !company.trim()) {
+    errors.company = 'Company name is required.'
   }
   if (!message || message.trim().length < 10) {
     errors.message = 'Message must be at least 10 characters.'
@@ -88,7 +91,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   const { name, email, phone, company, message } = req.body ?? {}
 
   // Server-side validation
-  const errors = validateBody({ name, email, phone, message })
+  const errors = validateBody({ name, email, phone, company, message })
   if (Object.keys(errors).length > 0) {
     return res.status(422).json({ errors })
   }
