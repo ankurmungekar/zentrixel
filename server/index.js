@@ -31,7 +31,7 @@ app.use(
       // Allow no-origin requests (e.g. curl, same-origin future)
       if (!origin) return cb(null, true)
       const allowed = isProd
-        ? [process.env.ALLOWED_ORIGIN].filter(Boolean)
+        ? (process.env.ALLOWED_ORIGIN || '').split(',').map(s => s.trim())
         : ['http://localhost:5173', 'http://localhost:4173']
       if (allowed.includes(origin)) return cb(null, true)
       cb(new Error(`CORS: origin ${origin} not allowed`))
