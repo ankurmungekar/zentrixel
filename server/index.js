@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import express from 'express'
-import cors from 'cors'
 import nodemailer from 'nodemailer'
 import rateLimit from 'express-rate-limit'
 import { buildEmailHtml } from './emailTemplate.js'
@@ -10,38 +9,45 @@ import fs from 'fs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST_DIR = path.join(__dirname, '..', 'dist')
-const isProd = process.env.NODE_ENV === 'production'
 
 const app = express()
 const PORT = process.env.PORT || 3001
 
-// ── Middleware ────────────────────────────────────────────────
+// ────────────────────────────────────────────────
+// ✅ CORS FIX (Manual - works reliably on Hostinger)
+// ────────────────────────────────────────────────
+const allowedOrigins = [
+  'https://zentrixel.com',
+  'https://www.zentrixel.com'
+]
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+
+  // ✅ Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200)
+  }
+
+  next()
+})
+
+// ────────────────────────────────────────────────
+// ✅ JSON parser AFTER CORS
+// ────────────────────────────────────────────────
 app.use(express.json())
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:4173',
-  process.env.ALLOWED_ORIGIN,
-].filter(Boolean)
-
-// Always apply CORS — frontend and backend are on different origins.
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      // Allow no-origin requests (e.g. curl, same-origin future)
-      if (!origin) return cb(null, true)
-      const allowed = isProd
-        ? (process.env.ALLOWED_ORIGIN || '').split(',').map(s => s.trim())
-        : ['http://localhost:5173', 'http://localhost:4173']
-      if (allowed.includes(origin)) return cb(null, true)
-      cb(new Error(`CORS: origin ${origin} not allowed`))
-    },
-    methods: ['POST', 'GET', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-  })
-)
-
-// Rate-limit: max 10 contact submits per 15 min per IP
+// ────────────────────────────────────────────────
+// Rate limiting
+// ────────────────────────────────────────────────
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
@@ -50,7 +56,9 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 })
 
-// ── Nodemailer transporter ────────────────────────────────────
+// ────────────────────────────────────────────────
+// Nodemailer
+// ────────────────────────────────────────────────
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -59,7 +67,9 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-// ── Validation helpers ────────────────────────────────────────
+// ────────────────────────────────────────────────
+// Validation
+// ────────────────────────────────────────────────
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE_REGEX = /^[+\d\s\-().]{7,20}$/
 
@@ -86,11 +96,12 @@ function validateBody(body) {
   return errors
 }
 
-// ── POST /api/contact ─────────────────────────────────────────
+// ────────────────────────────────────────────────
+// API Routes
+// ────────────────────────────────────────────────
 app.post('/api/contact', contactLimiter, async (req, res) => {
   const { name, email, phone, company, message } = req.body ?? {}
 
-  // Server-side validation
   const errors = validateBody({ name, email, phone, company, message })
   if (Object.keys(errors).length > 0) {
     return res.status(422).json({ errors })
@@ -128,19 +139,25 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   }
 })
 
-// Health-check
-app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
+// Health check
+app.get('/api/health', (_req, res) => {
+  res.json({ status: 'ok' })
+})
 
-// ── Static files ───────────────────────────
+// ────────────────────────────────────────────────
+// Static (optional - if FE bundled here)
+// ────────────────────────────────────────────────
 if (fs.existsSync(DIST_DIR)) {
   app.use(express.static(DIST_DIR))
-  // SPA fallback — let React Router handle all non-API routes
+
   app.get('*', (_req, res) => {
     res.sendFile(path.join(DIST_DIR, 'index.html'))
   })
 }
 
+// ────────────────────────────────────────────────
+// Start server
+// ────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n✅  Zentrixel API server running at http://localhost:${PORT}`)
-  console.log(`   Gmail user: ${process.env.GMAIL_USER ?? '(not set — check .env)'}`)
+  console.log(`\n✅ API running on port ${PORT}`)
 })

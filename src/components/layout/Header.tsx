@@ -331,8 +331,7 @@ export default function Header() {
       {mobileOpen && (
         <div className={`border-t lg:hidden max-h-[calc(100dvh-80px)] overflow-y-auto ${mobileBg}`}>
           <nav className="mt-8 flex flex-col gap-4 px-5 pb-32">
-            <Link to="/about-us" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About</Link>
-
+            <Link to="/" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Home</Link>
             {/* Mobile Products group */}
             <div>
               <p className={`rounded-lg px-3 py-3 text-base font-medium ${mobileLinkColor}`}>Products</p>
@@ -401,7 +400,7 @@ export default function Header() {
             </div>
 
             {/* <Link to="/insight" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Insight</Link> */}
-            <Link to="/about" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About Us</Link>
+            <Link to="/about-us" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>About Us</Link>
             <Link to="/contact" className={`rounded-lg px-3 py-3 text-base transition-colors ${mobileLinkColor}`} onClick={() => setMobileOpen(false)}>Contact</Link>
 
             <Link
