@@ -197,14 +197,22 @@ export default function AiCallingPage() {
 
           {/* Content — vertically centred within full viewport height */}
           <div className="relative mx-auto flex min-h-screen max-w-[1440px] items-center px-14 pt-20 max-md:px-5">
-            <div className="max-w-[764px] py-16 max-md:py-10">
+            <div className="max-w-[800px] py-16 max-md:py-10">
               <h1
                 className="font-heading font-medium leading-tight max-md:text-3xl"
                 style={{
                   fontSize: '42px',
                 }}
               >
-                Enterprise Conversational AI Infrastructure for Website, <br /> WhatsApp & Digital Channels
+                <span style={{
+                  fontSize: '42px',
+                  lineHeight: '1.238',
+                  background: 'linear-gradient(90deg, #134ADD 0%, #1093B8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>Enterprise Conversational AI </span>
+                Infrastructure for Website, <br /> WhatsApp & Digital Channels
               </h1>
 
               <div className="mt-8 max-w-[710px]">

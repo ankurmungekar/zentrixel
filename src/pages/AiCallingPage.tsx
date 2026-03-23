@@ -297,7 +297,7 @@ export default function AiCallingPage() {
                 <span style={{
                   fontSize: '42px',
                   lineHeight: '1.238',
-                  background: 'linear-gradient(90deg, #1E5EFF 0%, #18B9E5 100%)',
+                  background: 'linear-gradient(90deg, #134ADD 0%, #1093B8 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
